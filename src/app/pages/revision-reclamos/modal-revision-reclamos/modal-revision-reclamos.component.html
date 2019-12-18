@@ -1,0 +1,37 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Revision</span>
+</mat-toolbar>
+
+<div *ngIf="!loading">
+
+  <mat-form-field style="margin-top: 10px">
+      <textarea matInput placeholder="Diagnostico" [formControl]="diagnosticoControl" style="height: 150px">
+      </textarea>  
+      <mat-error *ngIf="diagnosticoControl.hasError('required')">
+        El diagnostico es <strong>Requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-select [formControl]="resulControl" placeholder="Resultado del diagnostico">
+        <mat-option value="A">Cumple con las condiciones requeridas</mat-option>
+        <mat-option value="R">No cumple con las condiciones requeridas</mat-option>
+      </mat-select>
+      <mat-error *ngIf="resulControl.hasError('required')">
+        El resultado es<strong>Requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <div>
+      <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=doRevision()>Guardar</button>
+    </div>
+
+</div>
+
+<div align="center" *ngIf="loading">
+  <mat-progress-spinner
+    [color]="color"
+    [mode]="mode"
+      >
+  </mat-progress-spinner>
+</div>

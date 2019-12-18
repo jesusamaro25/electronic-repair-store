@@ -1,0 +1,51 @@
+<mat-card>
+
+  <mat-card-header style="color: white" class="secundary-back">
+    <a mat-button color="white" [routerLink]="['/configuracion']">
+      <mat-icon>arrow_back</mat-icon>
+      <strong>Regresar</strong>
+    </a>
+    <a color="white" style="margin-top: 7px;margin-left: 40px">
+      <strong>Carrusel de Imagenes</strong>
+    </a>
+  </mat-card-header>
+
+    <mat-toolbar style="background: none" class="mat-elevation-z8">
+      <span class="espac"></span>
+      <button style="margin-left: 670px" mat-button color="primary" (click)="showRegistrar()">
+        <mat-icon>add</mat-icon>
+        <strong>Agregar Imagen</strong>
+      </button>
+    </mat-toolbar>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+       <ng-container matColumnDef="imagen">
+          <th mat-header-cell *matHeaderCellDef style="font-size:1rem" > Imagen </th>
+          <td mat-cell *matCellDef="let row">
+            <div class="profile-img">
+              <img src="{{row.imagen}}" style="height:100px; width:100px ;">
+            </div>
+          </td>
+      </ng-container> 
+  
+      <ng-container matColumnDef="actualizar">
+        <th mat-header-cell *matHeaderCellDef style="font-size:1rem">Borrar</th>
+        <td mat-cell *matCellDef="let row">
+          <a mat-icon-button matTooltip="Eliminar" (click)="eliminar(row)">
+            <mat-icon class="secundary-font">delete</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]"></mat-paginator>
+
+  </div>
+
+</mat-card>
+

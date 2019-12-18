@@ -1,0 +1,21 @@
+.espac{
+    flex: 1 1 auto;
+  }
+
+.search-input{
+  width: 20% ;
+  float: left ;
+  font-size: 14px 
+}
+
+table {
+  padding: 2em;
+  padding-top: 0em;
+  width: 100%;
+}
+
+.box{
+  width: 20% ;
+  margin-left: 20px;
+  height:59px;
+}

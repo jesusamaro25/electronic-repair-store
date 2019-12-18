@@ -1,0 +1,62 @@
+<mat-card>
+
+    <mat-card-header style="color: white" class="secundary-back">
+      <a color="white" style="margin-top: 7px;margin-left: 40px">
+        <strong>Difundir Promoción</strong>
+      </a>
+    </mat-card-header>
+
+      <div *ngIf="!loading" class="content-form">
+          <mat-form-field>
+              <mat-select placeholder="Seleccione una promoción" [formControl]="promocionId">
+                  <mat-option *ngFor="let promocion of promociones" [value]="promocion.id"  style="margin: 10px 0;">
+                    <img [src]="promocion.urlImagen" alt="promocion"
+                    width="70px"
+                    height="40px"
+                    style="margin: 0 10px;" >
+                      {{promocion.nombre}}
+                  </mat-option>
+              </mat-select>
+              <mat-error *ngIf="promocionId.hasError('required')">
+                Escoge una <strong>Promoción</strong>
+              </mat-error>
+            </mat-form-field>
+
+          <mat-form-field>
+            <mat-select [formControl]="actiMultiCtrl" placeholder="Selecciona las caracteristicas de los usuarios" [multiple]="true" #multiSelect>
+              <ngx-mat-select-search [formControl]="actiMultiFilterCtrl" [placeholderLabel]="'Buscar Condicion'" [noEntriesFoundLabel]="'No hay Resultados'"></ngx-mat-select-search>
+              <mat-option *ngFor="let actividad of filteredActiMulti | async" [value]="actividad">
+                {{actividad.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="actiMultiCtrl.hasError('required')">
+              Las caracteristicas son <strong>requeridas</strong>
+            </mat-error>
+          </mat-form-field>
+          <div>
+              <p>
+                  Caracteristicas De Usuario Seleccionadas:
+                </p>
+                <ul *ngFor="let actividad of actiMultiCtrl?.value">
+                  <li>{{actividad.name}}</li>
+                </ul>
+          </div>
+
+        <div>
+          <button mat-raised-button
+          class="secundary-back"
+          style="width: 100%;color: white"
+          (click)=difundirPromocion()>Difundir</button>
+        </div>
+
+      </div>
+
+      <div align="center" *ngIf="loading">
+        <mat-progress-spinner
+          [color]="color"
+          [mode]="mode">
+        </mat-progress-spinner>
+      </div>
+
+
+  </mat-card>

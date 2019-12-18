@@ -1,0 +1,39 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Especialidades</span>
+</mat-toolbar>
+
+<div *ngIf="!loading">
+
+  <p style="margin-bottom: 10%;margin-top: 30px;">
+    <mat-form-field>
+      <mat-select style="font-size: 20px;" [formControl]="actiMultiCtrl" placeholder="Selecciona las especialidades necesarias" [multiple]="true" #multiSelect>
+        <ngx-mat-select-search [formControl]="actiMultiFilterCtrl" [placeholderLabel]="'Buscar Especialidad'" [noEntriesFoundLabel]="'No hay Resultados'"></ngx-mat-select-search>
+        <mat-option *ngFor="let especialidad of filteredActiMulti | async" [value]="especialidad">
+          {{especialidad.descripcion}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="actiMultiCtrl.hasError('required')">
+        Las especialidades son <strong>requeridas</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    Especialidades Seleccionadas:
+  </p>
+  <ul *ngFor="let especialidad of actiMultiCtrl?.value">
+    <li>{{especialidad.descripcion}}</li>
+  </ul>
+
+
+  <div style="margin-top: 10%;">
+    <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=guardarEspecalidades()>Guardar</button>
+  </div>
+
+</div>
+
+<div align="center" *ngIf="loading">
+  <mat-progress-spinner
+    [color]="color"
+    [mode]="mode">
+  </mat-progress-spinner>
+</div>

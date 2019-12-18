@@ -1,0 +1,17 @@
+   .flex-container > div {
+    text-align: center;
+  }
+
+  .mensaje{
+    width: 70%;
+  }
+  
+  textarea{
+    height: 150px;
+  }
+  
+  button{
+    width:50%; 
+    height:40%; 
+    color:white
+  }

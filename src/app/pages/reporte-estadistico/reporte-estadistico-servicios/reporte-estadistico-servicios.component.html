@@ -1,0 +1,76 @@
+<mat-card style="margin-top: 20px">
+
+  <mat-card-header style="color: white" class="secundary-back">
+        <a color="white">
+            <strong>Servicios Prestados</strong>
+        </a>
+  </mat-card-header>
+
+  <mat-card-content>
+      <a style="margin-left: 40px"> <strong>Año</strong> </a>
+    
+      <div fxLayout="row" fxLayoutGap="10px" style="margin-left: 40px">
+        <div fxFlex="10%">
+          <mat-form-field>
+            <mat-select [(ngModel)]="tyear" placeholder="2019">
+              <mat-option *ngFor="let years of year" 
+                          [value]="years" >{{years}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+       
+        
+        <div fxFlex="5%"></div> 
+      </div>
+       <div style="margin-left: 35px">
+            <button mat-raised-button class="btn btn-info btn-fill">VER</button>
+            <button style="margin-left: 15px" (click)="downloadImagePDF()" mat-raised-button class="btn btn-info btn-fill">PDF</button>
+        </div>
+
+
+      <div class="img" style="margin-left: 40px">
+        <div id="content">
+          <br>
+          <div fxLayout="row" fxLayoutAlign="center center">
+              <canvas baseChart
+                      [datasets]="barChartData"
+                      [colors]="barChartData"
+                      [labels]="barChartLabels"
+                      [options]="barChartOptions"
+                      [legend]="barChartLegend"
+                      [chartType]="barChartType"
+                      height="35"
+                      width="100">
+              </canvas>
+              <br>
+              <br>
+          </div>
+              <table class="tabla mat-elevation-z8" mat-table [dataSource]="dataSource" style="margin-left: 80px; margin-top:20px">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="Mes">
+                        <th mat-header-cell *matHeaderCellDef> Mes </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Mes}} </td>
+                    </ng-container>
+
+                    <!-- Cantidad Column -->
+                    <ng-container matColumnDef="Cantidad">
+                        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Cantidad}} </td>
+                    </ng-container>
+
+                    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[4, 8, 12]" showFirstLastButtons></mat-paginator>          
+          </div>
+        </div>
+     
+
+      
+
+  </mat-card-content>  
+
+</mat-card>

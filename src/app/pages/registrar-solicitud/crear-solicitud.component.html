@@ -1,0 +1,82 @@
+<div fxLayout="row">
+	<div fxFlex.gt-sm="75%" class="div-content">
+		<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup" fxFlex.gt-sm="75%" class="div-content">
+      <mat-form-field>
+  <mat-select formControlName="dni" placeholder="DNI" #singleSelect required>
+    <mat-option>
+      <ngx-mat-select-search formControlName="selectSearh"></ngx-mat-select-search>
+    </mat-option>
+    <mat-option *ngFor="let user of filterUsers | async" [value]="user.dni">
+      {{user.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+     <!-- <mat-form-field>
+        <input matInput placeholder="DNI" formControlName="dni" [formControl]="dni" arial-label="Dni" [matAutocomplete]="auto" (keypress)="asignValue($event)" required>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let user of filterUsers | async" [value]="user.dni">
+            <span>{{user.dni}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>-->
+      <ng-template matStepLabel>Datos del Cliente</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Nombre" formControlName="name" disabled="true">
+      </mat-form-field>
+       <mat-form-field>
+        <input matInput placeholder="Apellido" formControlName="lastname" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Correo" formControlName="email" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Télefono" formControlName="phone" readonly>
+      </mat-form-field>
+      
+    </form>
+    <div class="mat-action-row" >
+        <button mat-button matStepperNext color="primary" class="cdk-keyboard-focused">Siguiente</button>
+      </div>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup" fxFlex.gt-sm="75%" class="div-content">
+      <ng-template matStepLabel>Datos del Equipo</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Categoria de Servicio" formControlName="categoryService" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Equipo" formControlName="drive" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Marca" formControlName="market" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Modelo" formControlName="model" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Descripcion del problema" formControlName="description" required>
+      </mat-form-field>
+    </form>
+     <div class="mat-action-row">
+        <button mat-button matStepperPrevious color="link" class="cdk-keyboard-focused">volver</button>
+        <button mat-button matStepperNext color="primary" class="cdk-keyboard-focused" >Siguiente</button>
+      </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Hecho</ng-template>
+    Solicitud Completa
+    <div class="mat-action-row">
+      <button mat-button matStepperPrevious color="link">volver</button>
+      <button mat-button color="accent" (click)="alert('enviado')">Enviar</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+	</div>
+	
+</div>
+
+
+
+

@@ -1,0 +1,14 @@
+.espac{
+  flex: 1 1 auto;
+}
+
+.search-input{
+width: 30% ;
+float: left ;
+}
+
+table {
+padding: 2em;
+padding-top: 0em;
+width: 100%;
+}

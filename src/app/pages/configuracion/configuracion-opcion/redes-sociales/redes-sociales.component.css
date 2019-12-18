@@ -1,0 +1,10 @@
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.flex-container > div {
+  text-align: center;
+  width: 60%
+}
+

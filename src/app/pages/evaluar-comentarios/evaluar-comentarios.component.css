@@ -1,0 +1,17 @@
+/* Column Widths */
+
+.mat-column-acciones {
+  max-width: 20%;
+}
+.mat-column-tipocomentario {
+  max-width: 15%;
+}
+.mat-column-comentario {
+    max-width: 60%;
+}
+table {
+  padding: 2em;
+  padding-top: 0em;
+  width: 100%;
+}
+

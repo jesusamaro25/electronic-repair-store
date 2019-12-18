@@ -1,0 +1,53 @@
+
+    <div class="row">
+        <div class="col-lg-6" style="margin-top: 25px">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title font-weight-bold">
+                        <strong> Servicios más demandados </strong>
+                    </h5>
+                    <p class="category"> 2019 </p>
+                </div>
+                <div class="content">
+                    <canvas 
+                        baseChart
+                        [data]="doughnutChartData"
+                        [labels]="doughnutChartLabels"
+                        [chartType]="doughnutChartType"
+                        [options]="doughnutChartOptions"
+                        [legend]="doughnutChartLegend"
+                        [colors]="colores"
+                        height="100"
+                        width="150">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6" style="margin-top: 25px">
+            <div class="card ">
+                <div class="card-header">
+                    <h5 class="title font-weight-bold">
+                        <strong> Solicitudes </strong>
+                    </h5>
+                    <p class="category"> 2019</p>
+                </div>
+                <div class="content">        
+                    <canvas 
+                        baseChart
+                        [data]="pieChartData" 
+                        [labels]="pieChartLabels" 
+                        [chartType]="pieChartType"
+                        [options]="pieChartOptions"
+                        [plugins]="pieChartPlugins"
+                        [legend]="pieChartLegend"
+                        [colors]="colores"
+                        height="100"
+                        width="150">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+

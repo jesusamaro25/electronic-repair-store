@@ -1,0 +1,29 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Actualizar tecnico</span>
+</mat-toolbar>
+
+<!-- <mat-form-field style="margin-top: 10px">
+  <input matInput #nombre placeholder="Servicio" maxlength="50" [formControl]="nombreControl">
+  <mat-error *ngIf="nombreControl.hasError('required')">
+    El nombre del servicio es <strong>Requerido</strong>
+  </mat-error>
+</mat-form-field> -->
+
+<mat-form-field style="margin-top: 10px">
+  <mat-select placeholder="Seleccione un tecnico" [formControl]="tecnicosControl">
+    <mat-option *ngFor="let tecnico of tecnicos" [value]="tecnico?.id">
+      {{tecnico?.nombre}} {{tecnico?.apellido}}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="tecnicosControl.hasError('required')">
+    Escoge un <strong>Tecnico</strong>
+  </mat-error>
+</mat-form-field>
+  <mat-card>
+    <textarea style="width: 100%;"  placeholder="Descripción" [formControl]="descripcion"></textarea>
+    <mat-error *ngIf="descripcion.hasError('required')">
+      La descripcion es <strong>Requerida</strong>
+    </mat-error>
+  </mat-card>
+  <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=actualizar() >Actualizar</button>
+

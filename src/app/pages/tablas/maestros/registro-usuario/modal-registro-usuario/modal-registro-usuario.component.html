@@ -1,0 +1,71 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Registro de Usuario</span>
+</mat-toolbar>
+
+<mat-form-field style="margin-top: 10px">
+  <input matInput #nombre placeholder="Nombre" maxlength="50" [formControl]="nombreControl">
+  <mat-error *ngIf="nombreControl.hasError('required')">
+    El nombre es <strong>Requerido</strong>
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field style="margin-top: 10px">
+  <input matInput #nombre placeholder="Apellido" maxlength="50" [formControl]="apellidoControl">
+  <mat-error *ngIf="apellidoControl.hasError('required')">
+    El apellido es <strong>Requerido</strong>
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select placeholder="Seleccione el sexo" [formControl]="sexoControl">
+      <mat-option value="M">
+          Mujer
+      </mat-option>
+      <mat-option value="H">
+          Hombre
+      </mat-option>
+  </mat-select>
+  <mat-error *ngIf="sexoControl.hasError('required')">
+    Escoge el <strong>sexo</strong>
+  </mat-error>
+</mat-form-field>
+
+
+<mat-form-field style="margin-top: 10px">
+  <input matInput #nombre placeholder="Correo" maxlength="50" [formControl]="correoControl">
+  <mat-error *ngIf="correoControl.hasError('required')">
+    El correo es <strong>Requerido</strong>
+  </mat-error>
+  <mat-error *ngIf="correoControl.hasError('email')">
+   No posee el formato de correo
+  </mat-error>
+</mat-form-field>
+         
+
+<mat-form-field >
+  <input matInput [matDatepicker]="picker" placeholder="Ingrese Fecha de Nacimiento" [formControl]="fechaNacimientoControl"  >
+    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="fechaNacimientoControl.hasError('required')">
+          La fecha es <strong>Requerido</strong>
+        </mat-error>
+</mat-form-field>
+
+
+<mat-form-field>
+  <mat-select placeholder="Seleccione un rol" [formControl]="rolesControl">
+      <mat-option *ngFor="let rol of roles" [value]="rol.id">
+          {{rol.nombre}}
+      </mat-option>
+  </mat-select>
+  <mat-error *ngIf="rolesControl.hasError('required')">
+    Escoge un <strong>rol</strong>
+  </mat-error>
+</mat-form-field>
+
+<div *ngIf="incluir; else act">
+  <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=registrar()>Agregar</button>
+</div>
+<ng-template #act>
+  <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=actualizar() cdkFocusInitial>Actualizar</button>
+</ng-template>

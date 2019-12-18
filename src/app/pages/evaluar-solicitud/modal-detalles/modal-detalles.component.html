@@ -1,0 +1,91 @@
+<mat-card-header>
+  <div mat-card-avatar> <mat-icon >description</mat-icon> </div>
+  <mat-card-title >Detalle de la Solicitud</mat-card-title>
+</mat-card-header>
+
+<div *ngIf="peticion">
+
+  <div fxLayout="row">
+    <form fxFlex="100%">
+      
+      <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong>Fecha de solicitud:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label>{{datos.data.fechaCreacion}}</label>
+        </div>
+      </div>
+  
+      <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong>Servicio Requerido:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label>{{datos.data.catalogoServicio.descripcion}}</label>
+        </div>
+      </div>
+  
+      <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong>Fecha de la revision:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label>{{datos.data.agenda.fechaActividad}}</label>
+        </div>
+      </div>
+  
+      <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong>Hora de la revision:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label>{{datos.data.agenda.bloqueHorario.descripcion}}</label>
+        </div>
+      </div>
+      
+      <div *ngIf="datos.promocion!=undefined">
+        <div fxLayout="row">
+          <div fxFlex="45%">
+            <label>
+              <strong>Promocion a utilizar:</strong>
+            </label>&nbsp;
+          </div>
+          <div fxFlex="1%"></div>
+          <div fxFlex="74%">
+            <label>{{form.promocion}}</label>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong>Motivo de la solicitud:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label>{{datos.data.descripcion}}</label>
+        </div>
+      </div>
+
+  
+    </form>
+  </div>
+
+</div>
+
+

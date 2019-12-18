@@ -1,0 +1,332 @@
+<mat-card>
+
+  <mat-card-content>
+
+    <mat-tab-group>
+
+      <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon>email</mat-icon> Mensajes
+        </ng-template>
+
+        <div fxLayout="column">
+
+          <div>
+            <br/>
+            <span>Mensajes Del Sistema</span>
+            <hr/>
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('/mensaje-primera-solicitud')">
+
+                            <mat-icon>person_pin</mat-icon>
+                            <strong>Mensaje Primera Solicitud</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('/mensaje-calificar')">
+
+                            <mat-icon>star</mat-icon>
+                            <strong>Mensaje Calificacion</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+          <div fxLayout="row">
+
+            
+
+          </div>
+
+          <div>
+            <br/>
+            <span>Correos</span>
+            <hr/>
+          </div>
+
+          <div fxLayaout="row">
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/correo-registro')">
+  
+                              <mat-icon>person_add</mat-icon>
+                              <strong>Correo Registro</strong>
+  
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/correo-promocion')">
+  
+                              <mat-icon>card_giftcard</mat-icon>
+                              <strong>Correo Promocion</strong>
+  
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+          </div>
+
+
+          <div fxLayout="row">
+
+          </div>
+
+        </div>
+
+      </mat-tab>
+
+      <mat-tab>
+
+          <ng-template mat-tab-label>
+              <mat-icon>notification_important</mat-icon> Notificaciones
+          </ng-template>
+
+          <div fxLayout="column">
+
+            <div>
+              <br/>
+              <span>Clientes</span>
+              <hr/>
+            </div>
+
+            <div fxLayout="row">
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('solicitud-aprobada')">
+
+                              <mat-icon>check_circle</mat-icon>
+                              <strong>Solicitud Aprobada</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/solicitud-rechazada')">
+
+                              <mat-icon>cancel</mat-icon>
+                              <strong>Solicitud Rechazada</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/revision-realizada')">
+
+                              <mat-icon>rate_review</mat-icon>
+                              <strong>Revision Realizada</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+            </div>
+
+            <div fxLayout="row">
+
+                <div fxFlex="auto">
+                  <mat-card>
+                      <mat-card-content>
+                        <div fxLayout="row">
+                          <div fxFlex="30%">
+                              <button mat-button class="secundary-font" (click)="goToPage('/presupuesto-generado')">
+  
+                                <mat-icon>attach_money</mat-icon>
+                                <strong>Presupuesto Generado</strong>
+  
+                              </button>
+                          </div>
+                        </div>
+                      </mat-card-content>
+                  </mat-card>
+                </div>
+
+                <div fxFlex="auto">
+                  <mat-card>
+                      <mat-card-content>
+                        <div fxLayout="row">
+                          <div fxFlex="30%">
+                              <button mat-button class="secundary-font" (click)="goToPage('/retirar-equipo')">
+  
+                                <mat-icon>build</mat-icon>
+                                <strong>Retirar Equipo</strong>
+  
+                              </button>
+                          </div>
+                        </div>
+                      </mat-card-content>
+                  </mat-card>
+                </div>
+
+                <div fxFlex="auto">
+                  <mat-card>
+                      <mat-card-content>
+                        <div fxLayout="row">
+                          <div fxFlex="30%">
+                              <button mat-button class="secundary-font" (click)="goToPage('reclamo-aprobado')">
+  
+                                <mat-icon>check_circle</mat-icon>
+                                <strong>Reclamo Aprobado</strong>
+  
+                              </button>
+                          </div>
+                        </div>
+                      </mat-card-content>
+                  </mat-card>
+                </div>
+
+            </div>
+
+            <div fxLayaout="row">
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/reclamo-rechazado')">
+
+                              <mat-icon>cancel</mat-icon>
+                              <strong>Reclamo Rechazado</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/revision-reclamo-realizada')">
+
+                              <mat-icon>rate_review</mat-icon>
+                              <strong>Revision Por Reclamo Realizada</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+            </div>
+
+            <div>
+              <br/>
+              <span>Tecnicos</span>
+              <hr/>
+            </div>
+
+            <div fxLayaout="row">
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/servicio-asignado')">
+
+                              <mat-icon>build</mat-icon>
+                              <strong>Servicio Asignado</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/reclamo-asignado')">
+
+                              <mat-icon>error</mat-icon>
+                              <strong>Reclamo Asignado</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+            </div>
+
+          </div>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,9 @@
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.flex-container > div {
+  margin-left:10%;
+  text-align: center;
+}

@@ -1,0 +1,80 @@
+<mat-card-header>
+  <div mat-card-avatar> <mat-icon >description</mat-icon> </div>
+  <mat-card-title >Detalle del servicio</mat-card-title>
+</mat-card-header>
+
+<div fxLayout="row">
+  <form fxFlex="100%">
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Cliente:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{dataD.cliente_nombre}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Marca del equipo:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{dataD.marca_nombre}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Modelo del equipo</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{dataD.modelo_nombre}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Problema del equipo:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{dataD.problema}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Diagnostico:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{dataD.diagnostico}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Servicio Solicitado:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{dataD.servicio_nombre}}</label>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,8 @@
+
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import "~owl-ng/assets/style/theme.min.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";

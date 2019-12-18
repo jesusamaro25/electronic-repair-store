@@ -1,0 +1,28 @@
+<div class="container2 {{timeEntryPlace}}">
+  <div class="content2">
+    <h4>{{timeEntryHeader}}</h4>
+    <p>{{timeEntryContent}}</p>
+
+    <div *ngIf="timeEntryState=='E'">
+      <strong>Estado:</strong>
+      <a mat-icon-button matTooltip="En espera">
+        <mat-icon class="yellow-icon">alarm</mat-icon>                   
+      </a>
+    </div>
+
+    <div *ngIf="timeEntryState=='R'">
+      <strong>Estado:</strong>
+      <a mat-icon-button matTooltip="Regendado por incidencia">
+        <mat-icon class="red-icon">cancel</mat-icon>                   
+      </a>
+    </div>
+
+    <div *ngIf="timeEntryState=='L'">
+      <strong>Estado:</strong>
+      <a mat-icon-button matTooltip="Finalizado">
+        <mat-icon class="green-icon">check_circle</mat-icon>                   
+      </a>
+    </div>
+
+  </div>
+</div>

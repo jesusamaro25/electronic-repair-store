@@ -1,0 +1,33 @@
+
+h3 {
+    margin: 0 0 10px;
+  }
+  
+mat-toolbar{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+  pre {
+    background-color: #f5f5f5;
+    padding: 15px;
+  }
+
+  .espac{
+    flex: 1 1 auto;
+  }
+  
+  .cal-today{
+    background-color: #000;
+  }
+
+  .owl-dt-calendar-table 
+  .owl-dt-calendar-cell-selected{
+    color:rgba(255,255,255,.85);
+    background-color: #253b6d;
+  }
+
+ 
+.custon-seld span{
+  color: #d1e8ff !important;
+}

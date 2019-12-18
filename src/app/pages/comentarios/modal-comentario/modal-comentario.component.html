@@ -1,0 +1,37 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Comentario</span>
+</mat-toolbar>
+
+<div *ngIf="!loading">
+
+  <mat-form-field style="margin-top: 10px">
+
+    <mat-select placeholder="Tipo de Comentario" [formControl]="tipocomentarioControl">
+      <mat-option *ngFor="let tipocomen of tipoComentario" [value]="tipocomen.id"> {{tipocomen.nombre}} </mat-option>
+    </mat-select>
+    <mat-error *ngIf="tipocomentarioControl.hasError('required')">
+      El tipo de comentario es <strong>Requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 10px">
+    <textarea matInput #comentario placeholder="Comentario" [formControl]="comentarioControl"></textarea>
+    <mat-error *ngIf="comentarioControl.hasError('required')">
+      El comentario es <strong>Requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  
+  <div *ngIf="incluir; else act">
+    <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=registrar()>Agregar</button>
+  </div>
+  <ng-template #act>
+    <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=actualizar() cdkFocusInitial>Actualizar</button>
+  </ng-template>  
+
+</div>
+
+<div align="center" *ngIf="loading">
+  <mat-progress-spinner
+    [color]="color"
+    [mode]="mode">
+  </mat-progress-spinner>
+</div>

@@ -1,0 +1,388 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+ <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;background-size:cover;">
+    <!-- User profile image -->
+    <div class="profile-img"> <img src="{{user.urlFoto}}" alt="user"> </div>
+    <!-- User profile text-->
+    <!-- ============================================================== -->
+    <!-- Profile - style you can find in header.scss -->
+    <!-- ============================================================== -->
+    <div class="profile-text"><a class="">{{user.nombre}} {{user.apellido}}<i class="font-12 m-l-5"></i></a></div>
+
+</div>
+<mat-nav-list>
+
+    <mat-list-item  routerLinkActive="selected" *ngIf="permi['inicio']==true || user.rol.tipo=='cliente' ">
+
+        <a [routerLink]="['/dashboard']">
+
+            <mat-icon>home</mat-icon>
+            <span>Inicio</span>
+
+        </a>
+
+    </mat-list-item>
+
+    <mat-list-item  routerLinkActive="selected" *ngIf="permi['configuracion']">
+
+        <a [routerLink]="['/configuracion']">
+
+            <mat-icon>settings</mat-icon>
+            <span>Configuracion</span>
+
+        </a>
+
+    </mat-list-item>
+
+    <mat-list-item  routerLinkActive="selected" *ngIf="permi['tablas']">
+
+        <a [routerLink]="['/tablas']">
+
+            <mat-icon>view_list</mat-icon>
+            <span>Tablas Basicas</span>
+
+        </a>
+
+    </mat-list-item>
+
+    <mat-list-item *ngIf="permi['servicios'] || user.rol.tipo=='cliente'"> <!-- menu de servicios -->
+
+        <mat-accordion>
+
+            <mat-expansion-panel>
+
+                <mat-expansion-panel-header>
+
+                    <mat-panel-title>
+                        <span>Servicios</span>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['crear solicitud'] || user.rol.tipo=='cliente'">
+
+                        <a [routerLink]="['/solicitar-servicio']">
+
+                            <mat-icon>add_circle</mat-icon>
+                            <span>Crear Solicitud</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['evaluar solicitud']">
+
+                        <a [routerLink]="['/evaluar-solicitud']">
+
+                            <mat-icon>tab</mat-icon>
+                            <span>Evaluar Solicitud</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['revision de equipos']">
+
+                        <a [routerLink]="['/revision-equipos']">
+
+                            <mat-icon>rate_review</mat-icon>
+                            <span>Revision de equipos</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['generar presupuestos']">
+
+                        <a [routerLink]="['/generar-presupuesto']">
+
+                            <mat-icon>attach_money</mat-icon>
+                            <span>Generar Presupuestos</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['evaluar presupuestos'] || user.rol.tipo=='cliente'">
+
+                        <a [routerLink]="['/presupuestos']">
+
+                            <mat-icon>attach_money</mat-icon>
+                            <span>Presupuestos</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['equipos en reparacion'] || user.rol.tipo=='cliente'">
+
+                        <a [routerLink]="['/equipos-reparacion']">
+
+                            <mat-icon>build</mat-icon>
+                            <span>Equipos en reparacion</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['servicios asignados']">
+
+                        <a [routerLink]="['/servicios-tecnico']">
+
+                            <mat-icon>build</mat-icon>
+                            <span>Servicios Asignados</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['entrega de equipos']">
+
+                        <a [routerLink]="['/entrega-equipo']">
+
+                            <mat-icon>devices</mat-icon>
+                            <span>Entrega de equipos</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['calificar servicio'] || user.rol.tipo=='cliente'">
+
+                        <a [routerLink]="['/calificar-servicio']">
+
+                            <mat-icon>star_rate</mat-icon>
+                            <span>Calificar Servicio</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['reasignar tecnico']">
+
+                        <a [routerLink]="['/reasignar-tecnico']">
+
+                            <mat-icon>build</mat-icon>
+                            <span>Reasignar Tecnico</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                </mat-nav-list>
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </mat-list-item>
+
+    <mat-list-item *ngIf="permi['promociones']"><!-- menu de promociones -->
+
+        <mat-accordion>
+
+            <mat-expansion-panel>
+
+                <mat-expansion-panel-header>
+
+                    <mat-panel-title>
+                        <span>Promociones</span>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['crear promocion']">
+
+                        <a [routerLink]="['/crear-promocion']">
+
+                            <mat-icon>card_giftcard</mat-icon>
+                            <span>Crear Promocion</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['difundir promocion']">
+
+                        <a [routerLink]="['/difundir']">
+
+                            <mat-icon>wifi</mat-icon>
+                            <span>Difundir Promocion</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                </mat-nav-list>
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </mat-list-item>
+
+    <mat-list-item *ngIf="permi['atencion al cliente']  || user.rol.tipo=='cliente' "> <!-- menu de atencion al cliente -->
+
+        <mat-accordion>
+
+            <mat-expansion-panel>
+
+                <mat-expansion-panel-header>
+
+                    <mat-panel-title>
+                        <span>Atencion Al Cliente</span>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['reclamos'] || user.rol.tipo=='cliente'">
+
+                        <a [routerLink]="['/crear-reclamo']">
+
+                            <mat-icon>notification_important</mat-icon>
+                            <span>Reclamos</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['evaluar reclamo']">
+
+                        <a [routerLink]="['/evaluar-reclamo']">
+
+                            <mat-icon>tab</mat-icon>
+                            <span>Evaluar Reclamo</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['revision por reclamo']">
+
+                        <a [routerLink]="['/revision-reclamo']">
+
+                            <mat-icon>rate_review</mat-icon>
+                            <span>Revision Por Reclamo</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['reclamos asignados']">
+
+                        <a [routerLink]="['/servicios-reclamo']">
+
+                            <mat-icon>build</mat-icon>
+                            <span>Reclamos Asignados</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['entrega por reclamos']">
+
+                        <a [routerLink]="['/entrega-reclamo']">
+
+                            <mat-icon>devices</mat-icon>
+                            <span>Entrega Por Reclamo</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['comentarios']  || user.rol.tipo=='cliente' ">
+
+                        <a [routerLink]="['/comentarios']">
+
+                            <mat-icon>record_voice_over</mat-icon>
+                            <span>Comentarios</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['evaluar comentarios']">
+
+                        <a [routerLink]="['/evaluar-comentarios']">
+
+                            <mat-icon>tab</mat-icon>
+                            <span>Evaluar Comentario</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                </mat-nav-list>
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </mat-list-item>
+
+    <mat-list-item *ngIf="permi['reportes']"><!-- menu de reportes -->
+
+        <mat-accordion>
+
+            <mat-expansion-panel>
+
+                <mat-expansion-panel-header>
+
+                    <mat-panel-title>
+                        <span>Reportes</span>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['reporte estructurado y no estructurado']">
+
+                        <a [routerLink]="['/reporte-estructurado']">
+
+                            <mat-icon>show_chart</mat-icon>
+                            <span>Estructurados</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                    <mat-list-item routerLinkActive="selected" *ngIf="permi['reporte estadistico']">
+
+                        <a [routerLink]="['/reporte-estadistico']">
+
+                            <mat-icon>bar_chart</mat-icon>
+                            <span>Estadísticos</span>
+
+                        </a>
+
+                    </mat-list-item>
+
+                </mat-nav-list>
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </mat-list-item>
+
+    <mat-list-item routerLinkActive="selected" *ngIf="permi['administrar sistema']">
+
+        <a [routerLink]="['/administrar']">
+
+            <mat-icon>settings_applications</mat-icon>
+            <span>Administrar Sistema</span>
+
+        </a>
+
+    </mat-list-item>
+
+</mat-nav-list>
+

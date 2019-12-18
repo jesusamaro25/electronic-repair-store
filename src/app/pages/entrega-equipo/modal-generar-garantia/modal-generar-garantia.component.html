@@ -1,0 +1,50 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+    <span style="font-size: 15px">Garantia De Equipo</span>
+  </mat-toolbar>
+  
+  <div *ngIf="!loading">
+  
+    <p>
+      <mat-form-field>
+        <mat-select [formControl]="actiMultiCtrl" placeholder="Selecciona las condiciones" [multiple]="true" #multiSelect>
+          <ngx-mat-select-search [formControl]="actiMultiFilterCtrl" [placeholderLabel]="'Buscar Condicion'" [noEntriesFoundLabel]="'No hay Resultados'"></ngx-mat-select-search>
+          <mat-option *ngFor="let actividad of filteredActiMulti | async" [value]="actividad">
+            {{actividad.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="actiMultiCtrl.hasError('required')">
+          Las actividades son <strong>requeridas</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      Condiciones De Garantia Seleccionadas:
+    </p>
+    <ul *ngFor="let actividad of actiMultiCtrl?.value">
+      <li>{{actividad.name}}</li>
+    </ul>
+
+    <mat-form-field>
+      <mat-select placeholder="Escoge los dias" [formControl]="dateControl">
+          <mat-option *ngFor="let dias of duracion" [value]="dias.id">
+              {{dias.dia}} Dias
+          </mat-option>
+      </mat-select>
+      <mat-error *ngIf="dateControl.hasError('required')">
+        Escoge una <strong>duracion</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <div>
+      <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=gGaran()>Entregar</button>
+    </div>
+  
+  </div>
+  
+  <div align="center" *ngIf="loading">
+    <mat-progress-spinner
+      [color]="color"
+      [mode]="mode">
+    </mat-progress-spinner>
+  </div>
+  

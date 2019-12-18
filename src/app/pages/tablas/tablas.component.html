@@ -1,0 +1,471 @@
+<mat-card>
+
+  <mat-card-header>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <mat-tab-group>
+
+      <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon>build</mat-icon> Servicios
+        </ng-template>
+
+        <div fxLayout="column">
+
+          <div>
+            <br/>
+            <span>Datos Generales</span>
+            <hr/>
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('tipo-servicio')">
+
+                            <mat-icon>category</mat-icon>
+                            <strong>Tipo de servicio</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('catalogo-servicios')">
+                            <mat-icon>build</mat-icon>
+                            <strong>Catalogo de servicios</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('actividad-servicio')">
+                            <mat-icon>description</mat-icon>
+                            <strong>Actividades Por Servicio</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('servicios-caracteristica')">
+
+                            <mat-icon>category</mat-icon>
+                            <strong>Servicios-Caracteristica</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+          <div>
+            <br/>
+            <span>Equipos</span>
+            <hr/>
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('/tipo-equipo')">
+                            <mat-icon>devices</mat-icon>
+                            <strong>Tipo De Equipo</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('/marca-equipo')">
+                            <mat-icon>smartphone</mat-icon>
+                            <strong>Marca De Equipo</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+          <div fxLayaout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('modelo-equipo')">
+                            <mat-icon>smartphone</mat-icon>
+                            <strong>Modelo De Equipo</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('categoria-equipo')">
+                            <mat-icon>devices_other</mat-icon>
+                            <strong>Categoria De Equipo</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+
+          <div>
+            <br/>
+            <span>Post Servicio</span>
+            <hr/>
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('condiciones-garantia')">
+
+                            <mat-icon>cloud_done</mat-icon>
+                            <strong>Codiciones De Garantia</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('duracion-garantia')">
+
+                            <mat-icon>calendar_today</mat-icon>
+                            <strong>Duracion De Garantia</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('/tipo-reclamo')">
+
+                            <mat-icon>warning</mat-icon>
+                            <strong>Tipos De Reclamos</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+          <div>
+            <br/>
+            <span>Otros</span>
+            <hr/>
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('descuento-promocion')">
+
+                            <mat-icon>local_offer</mat-icon>
+                            <strong>Descuento de promocion</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('pregunta-calificacion')">
+
+                            <mat-icon>star</mat-icon>
+                            <strong>Preguntas de calificacion</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('motivo-rechazo')">
+
+                            <mat-icon>cancel</mat-icon>
+                            <strong>Motivo De Rechazo</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+        </div>
+
+      </mat-tab>
+
+      <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon>people</mat-icon> Usuarios
+        </ng-template>
+
+        <div fxLayout="column">
+
+          <div>
+            <br/>
+            <span>Registro y Opciones</span>
+            <hr/>
+          </div>
+
+          <div fxLayout=row>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('registro-usuario')">
+
+                            <mat-icon>person</mat-icon>
+                            <strong>Registro De Usuarios</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('registro-cliente')">
+  
+                              <mat-icon>person</mat-icon>
+                              <strong>Registro De Clientes</strong>
+  
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('caracteristicas-cliente')">
+
+                            <mat-icon>tag_faces</mat-icon>
+                            <strong>Caracteristicas de cliente</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+
+                          <button mat-button class="secundary-font" (click)="goToPage('tipo-comentario')">
+
+                            <mat-icon>record_voice_over</mat-icon>
+                            <strong>Tipos De Comentario</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+            
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('tipo-caracteristica')">
+
+                            <mat-icon>folder_shared</mat-icon>
+                            <strong>Tipo de caracteristica</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+        </div>
+
+      </mat-tab>
+
+      <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon>event</mat-icon> Agenda
+        </ng-template>
+
+        <div fxLayout="column">
+
+          <div>
+            <br/>
+            <span>Horarios e Incidencias</span>
+            <hr/>
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('bloques-agenda')">
+
+                            <mat-icon>access_time</mat-icon>
+                            <strong>Bloques Horarios</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('tipo-incidencia')">
+
+                            <mat-icon>error</mat-icon>
+                            <strong>Tipos de incidencia</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+        </div>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,31 @@
+<mat-card>
+
+  <mat-card-header style="color: white" class="secundary-back">
+    <a mat-button color="white" [routerLink]="['/configuracion']">
+      <mat-icon>arrow_back</mat-icon>
+      <strong>Regresar</strong>
+    </a>
+    <a color="white" style="margin-top: 7px;margin-left: 40px">
+        <strong>Costo por revision</strong>
+      </a>
+  </mat-card-header>
+  
+  <mat-card-content>
+
+    <div class="example-container">
+
+      <mat-form-field>
+        <input matInput placeholder="Cantidad Minima" type="number" class="example-right-align" [formControl]="minControl">
+        <span matPrefix>Bs&nbsp;</span>
+      </mat-form-field> 
+
+      <mat-form-field>
+          <input matInput placeholder="Cantidad Maxima" type="number" class="example-right-align" [formControl]="maxControl">
+          <span matPrefix>Bs&nbsp;</span>
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button class="secundary-back" style="width:40%; color:white; margin-top:2rem" (click)=guardar()>Guardar</button>
+  </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,131 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div class="main-container">
+  <!-- ============================================================== -->
+  <!-- Topbar - style you can find in header.scss -->
+  <!-- ============================================================== -->
+  <mat-toolbar class="topbar telative primary-back">
+    <!-- ============================================================== -->
+    <!-- Logo - style you can find in header.scss -->
+    <!-- ============================================================== -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">
+
+        <img src="assets/images/Smartech_2.png" alt="user" class="logo-header">
+        <h1 style="color: white">Colossus</h1>
+        <!-- Logo icon --><b>
+          <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+          <!-- Dark Logo icon
+                    <img src="assets/images/logo-icon.jpg" alt="homepage" class="light-logo">
+                    <img src="assets/images/logo-icon.jpg" alt="homepage" class="light-logo">
+                    <!-- Light Logo icon
+                    <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo">-->
+        </b>
+        <!--End Logo icon -->
+        <!-- Logo text -->
+        <span fxShow="false" fxShow.gt-xs>
+          <!-- dark Logo text
+                 <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo">
+                 <!-- Light Logo text
+                 <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage">-->
+        </span>
+      </a>
+    </div>
+    <!-- ============================================================== -->
+    <!-- sidebar toggle -->
+    <!-- ============================================================== -->
+
+    <button mat-icon-button (click)="snav.toggle();" value="sidebarclosed">
+      <mat-icon alt="user" style="color:white">menu</mat-icon>
+    </button>
+
+
+
+    <span fxFlex></span>
+    <button [matMenuTriggerFor]="menu" mat-icon-button style="margin-right:4rem; color: white" [matBadge]="notiSinLeer"
+      matBadgeColor="warn" >
+      <mat-icon>notification_important</mat-icon>
+
+      <!-- Notificaciones -->
+      <mat-menu #menu="matMenu" style="width: 20%;" (closed)="leerNotificaciones()">
+        <li class="text-center" style="list-style-type: none;">
+          <div class="drop-title">Notificaciones</div>
+        </li>
+
+        <div *ngFor="let item of notificaciones"
+          style="margin-bottom: 10px; display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 0 5px 0 5px ;"
+          >
+          <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+            <img src="{{item.urlImagen}}" alt="img" width="45px" style="border-radius: 50%;margin-right: 2px; align-self: flex-start;">
+            <span>{{item.titulo}}</span>
+
+            <mat-icon *ngIf="!item.leida" style="color: red">notification_important</mat-icon>
+          </div>
+          <span
+            style="font-size: 10px; text-align: justify;padding-left: 10px; padding-right: 10px;">{{item.descripcion}}</span>
+          <mat-divider></mat-divider>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <button *ngIf="otras > 0" mat-button color='primary' style="margin:auto" (click)="openDialog()">Ver todas</button>
+        </div>
+
+      </mat-menu>
+      <!-- fin de notificaciones -->
+      <mat-menu #profile="matMenu" class="mymegamenu">
+
+        <button mat-menu-item [routerLink]="['/menu-perfil']">
+          <mat-icon>account_box</mat-icon> Perfil
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon> Cerrar Sesion
+        </button>
+      </mat-menu>
+    </button>
+
+
+
+
+
+    <!-- ============================================================== -->
+    <!-- app header component - style you can find in header.scss / header.component.ts-->
+    <!-- ============================================================== -->
+    <app-header></app-header>
+  </mat-toolbar>
+  <!-- ============================================================== -->
+  <!-- End Topbar - style you can find in pages.scss -->
+  <!-- ============================================================== -->
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+    <!-- ============================================================== -->
+    <!-- Sidebar - style you can find in sidebar.scss -->
+    <!-- ============================================================== -->
+    <mat-sidenav #snav id="snav" class="dark-sidebar pl-xs" [mode]="mobileQuery.matches ? 'side' : 'over'"
+      fixedTopGap="0" [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches">
+
+      <app-sidebar></app-sidebar>
+
+    </mat-sidenav>
+    <!-- ============================================================== -->
+    <!-- Sidebar - style you can find in sidebar.scss -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- Page container - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <mat-sidenav-content class="page-wrapper">
+
+      <div class="page-content">
+
+        <router-outlet></router-outlet>
+
+      </div>
+
+    </mat-sidenav-content>
+    <!-- ============================================================== -->
+    <!-- Page container - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+  </mat-sidenav-container>
+</div>

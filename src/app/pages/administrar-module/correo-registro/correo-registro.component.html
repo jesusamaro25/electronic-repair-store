@@ -1,0 +1,40 @@
+<mat-card>
+
+  <mat-card-header style="color: white" class="secundary-back">
+    <a mat-button color="white" [routerLink]="['/administrar']">
+      <mat-icon>arrow_back</mat-icon>
+      <strong>Regresar</strong>
+    </a>
+    <a color="white" style="margin-top: 7px;margin-left: 40px">
+      <strong>Correo  Registro</strong>
+    </a>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="flex-container">
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Titulo del correo"  [formControl]="tituloControl" required>
+          <mat-error *ngIf="tituloControl.hasError('required')">
+            El titulo  es <strong>Requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="derecha">
+
+        <div style="align-content:center">
+          <mat-form-field >
+            <textarea matInput placeholder="Escriba el contenido del correo" [formControl]="textoControl" style="width:500px; height: 200px;"></textarea>
+            <mat-error *ngIf="textoControl.hasError('required')">
+              El texto es <strong>Requerido</strong>
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button class="secundary-back" style="width:100%; color:white"
+            (click)=guardar()>Guardar</button>
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

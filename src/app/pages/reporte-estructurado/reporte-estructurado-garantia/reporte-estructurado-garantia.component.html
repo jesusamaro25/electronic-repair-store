@@ -1,0 +1,146 @@
+<mat-card>
+  <mat-card-header style="color: white" class="secundary-back">
+      <a color="white">
+          <strong>Reporte de garantias emitidas</strong>
+      </a>
+  </mat-card-header>
+    
+  <mat-card-content>
+    <a> <strong>Fecha de emisión</strong> </a>
+    <a style="margin-left: 135px"> <strong>Estado</strong> </a>
+    <a style="margin-left: 92px"> <strong>Categoria</strong> </a>
+    <a style="margin-left: 90px"> <strong>Tipo Equipo</strong> </a>
+  
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="12%"> 
+        <mat-form-field color="accent"> 
+            <mat-label>Desde</mat-label>
+            <input matInput [matDatepicker]="picker1" [formControl]="inicioControl">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>  
+      </div>
+      <div fxFlex="12%">
+        <mat-form-field color="accent">
+            <mat-label>Hasta</mat-label>
+            <input matInput [matDatepicker]="picker2" [formControl]="finControl">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div fxFlex="12%">
+        <mat-form-field style="margin-left: 23px">
+            <mat-select placeholder="Estado" [formControl]="estaControl">
+              <mat-option  value="T" >Todos</mat-option>
+              <mat-option  value="Activa" >Activa</mat-option>
+              <mat-option  value="Vencida" >Vencida</mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="15%">
+        <mat-form-field style="margin-left: 50px">
+            <mat-select [formControl]="cateControl" placeholder="Categoria" (selectionChange)="cargarTipos()">
+            <mat-option  value="T" >Todas</mat-option>
+            <mat-option *ngFor="let categorias of categoria" [value]="categorias" >{{categorias.nombre}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="15%">
+        <mat-form-field style="margin-left: 75px">
+            <mat-select [formControl]="tipoControl" placeholder="Tipo Equipo">
+            <mat-option  value="T" >Todos</mat-option>
+            <mat-option *ngFor="let tipos of tipo" [value]="tipos" >{{tipos.nombre}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+        
+      
+        <div fxFlex="5%"></div> 
+
+          <div fxFlex="5%"></div> 
+      </div>
+
+      <div style="margin-top: 10px">
+            <button mat-raised-button class="btn btn-info btn-fill" (click)="CargarTabla()">VER</button>
+
+            <button style="margin-left: 10px" (click)="downloadImagePDF()" mat-raised-button class="btn btn-info btn-fill">PDF</button>
+
+            <button style="margin-left: 10px" mat-raised-button class="btn btn-info btn-fill">EXPORTAR NO ESTRUCTURADO</button>
+        </div>
+
+
+
+<div class="mat-elevation-z8 img">
+<div id="content">
+
+    <div fxLayout="row" fxLayoutGap="20px">
+
+      <div *ngIf="inicioControl.valid">
+          <strong>Desde: {{inicioControl.value | date: 'dd/MM/yyyy'}}</strong>
+      </div>
+      <div *ngIf="finControl.valid">
+          <strong>Hasta: {{finControl.value | date: 'dd/MM/yyyy'}}</strong>
+      </div>
+      <div *ngIf="estaControl.valid">
+          <strong *ngIf="estaControl.value=='T'">Estado: Todas</strong>
+          <strong *ngIf="estaControl.value=='Activa'">Estado: Activa</strong>
+          <strong *ngIf="estaControl.value=='Vencida'">Estado: Vencida</strong>
+      </div>
+      <div *ngIf="cateControl.valid">
+          <strong *ngIf="cateControl.value!='T'">Categoria: {{cateControl.value.nombre}}</strong>
+          <strong *ngIf="cateControl.value=='T'">Categoria: Todas</strong>
+      </div>
+      <div *ngIf="tipoControl.valid">
+          <strong *ngIf="tipoControl.value!='T'">Tipo: {{tipoControl.value.nombre}}</strong>
+          <strong *ngIf="tipoControl.value=='T'">Tipo: Todos</strong>
+      </div>
+
+    </div>
+
+<table mat-table [dataSource]="dataSource" style="margin-top: 25px">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Descripcion Column -->
+  <ng-container matColumnDef="Descripcion">
+    <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+    <td mat-cell *matCellDef="let element"> {{element.Descripcion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Cliente">
+      <th mat-header-cell *matHeaderCellDef> Cliente </th>
+      <td mat-cell *matCellDef="let element"> {{element.Cliente}} </td>
+    </ng-container>
+
+  <!-- Fecha Column -->
+  <ng-container matColumnDef="Equipo">
+    <th mat-header-cell *matHeaderCellDef> Equipo </th>
+    <td mat-cell *matCellDef="let element"> {{element.Equipo}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Inicio">
+      <th mat-header-cell *matHeaderCellDef> Fecha De Emision </th>
+      <td mat-cell *matCellDef="let element"> {{element.Inicio}} </td>
+    </ng-container>
+
+   <ng-container matColumnDef="Fin">
+    <th mat-header-cell *matHeaderCellDef> Fecha De Vencimiento </th>
+    <td mat-cell *matCellDef="let element"> {{element.Fin}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+</div>
+
+     
+
+  </mat-card-content>
+</mat-card>

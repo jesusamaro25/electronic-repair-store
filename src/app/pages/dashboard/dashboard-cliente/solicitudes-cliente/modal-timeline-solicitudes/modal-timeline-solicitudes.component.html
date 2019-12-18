@@ -1,0 +1,7 @@
+<div class="timeline2">
+  <app-timeline *ngFor='let entry of timeLine' timeEntryHeader={{entry.year}} 
+  timeEntryContent={{entry.detail}} timeEntryPlace={{entry.place}}></app-timeline>
+</div>
+<div *ngIf="bool">
+  <strong>No Hay Entradas En El Timeline</strong>
+</div>

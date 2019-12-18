@@ -1,0 +1,23 @@
+<mat-tab-group>
+    <mat-tab *ngIf="user.rol.tipo == 'administrativo'">
+        <ng-template mat-tab-label>
+            <mat-icon>work</mat-icon> Dashboard Jefe
+        </ng-template>
+          <app-dashboard-jefe></app-dashboard-jefe>
+    </mat-tab>
+    <mat-tab *ngIf="user.rol.tipo == 'tecnico'">
+        <ng-template mat-tab-label>
+            <mat-icon>build</mat-icon> Dashboard Tecnico
+        </ng-template>
+          <app-dashboard-tecnico></app-dashboard-tecnico>
+    </mat-tab>
+    <mat-tab *ngIf="user.rol.tipo == 'cliente'">
+        <ng-template mat-tab-label>
+            <mat-icon>person_pin</mat-icon> Dashboard Cliente
+        </ng-template>
+        <app-dashboard-cliente></app-dashboard-cliente>
+    </mat-tab>
+</mat-tab-group>
+ 
+
+

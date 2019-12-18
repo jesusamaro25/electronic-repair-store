@@ -1,0 +1,13 @@
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.flex-container > div {
+  margin-left: 1rem;
+  text-align: center;
+}
+
+.img{
+  width: 60%
+}

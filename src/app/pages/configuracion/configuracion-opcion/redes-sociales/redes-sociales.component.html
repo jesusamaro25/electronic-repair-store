@@ -1,0 +1,45 @@
+<mat-card>
+
+    <mat-card-header style="color: white" class="secundary-back">
+      <a mat-button color="white" [routerLink]="['/configuracion']">
+        <mat-icon>arrow_back</mat-icon>
+        <strong>Regresar</strong>
+      </a>
+      <a color="white" style="margin-top: 7px;margin-left: 40px">
+          <strong>Redes Sociales</strong>
+        </a>
+    </mat-card-header>
+  
+    <mat-card-content>
+    <div class="flex-container">
+      
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Facebook" [formControl]="faceControl">
+          <mat-error *ngIf="faceControl.hasError('required')">
+            El facebook es <strong>Requerido</strong>
+          </mat-error>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Instagram" [formControl]="instaControl">
+          <mat-error *ngIf="instaControl.hasError('required')">
+            El instagram es <strong>Requerido</strong>
+          </mat-error>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Twitter" [formControl]="twiControl">
+          <mat-error *ngIf="twiControl.hasError('required')">
+            El twitter es <strong>Requerido</strong>
+          </mat-error>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+        
+        <button mat-raised-button class="secundary-back" style="width:80%; color:white" (click)=guardar()>Guardar</button>
+      </div>
+    </div>
+    
+  </mat-card-content>
+  </mat-card>
+  

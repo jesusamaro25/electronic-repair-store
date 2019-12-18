@@ -1,0 +1,47 @@
+<mat-card>
+
+  <mat-card-header style="color: white" class="secundary-back">
+    <a color="white">
+      <strong>Reclamos Por Evaluar</strong>
+    </a>
+  </mat-card-header>
+
+  <div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="reclamo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size:1rem"> Tipo de Reclamo </th>
+        <td mat-cell *matCellDef="let row"> {{row.tipo_reclamo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size:1rem"> Descripcion </th>
+        <td mat-cell *matCellDef="let row"> {{row.descripcion}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef  style="font-size:1rem">Acciones</th>
+        <td mat-cell *matCellDef="let row">
+          <a mat-icon-button matTooltip="Ver Detalles"  (click)="showDetalle(row)">
+            <mat-icon class="secundary-font">description</mat-icon>                   
+          </a> 
+          <a mat-icon-button matTooltip="Evaluar Reclamo"  (click)="aprobar(row)">
+              <mat-icon class="green-icon">done_outline</mat-icon>                    
+          </a>
+          <a mat-icon-button matTooltip="Rechazar Reclamo"  (click)="rechazar(row)">
+              <mat-icon class="red-icon">highlight_off</mat-icon>                  
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]"></mat-paginator>
+
+  </div>
+
+</mat-card>

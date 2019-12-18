@@ -1,0 +1,119 @@
+<mat-card-header>
+</mat-card-header>
+<mat-card-content>
+
+  <div fxLayout="row" [formGroup]='formPerfil'>
+    <div fxFlex.gt-sm="70%">
+      <mat-card-content>
+        <div fxFlex="48%">
+          <mat-form-field style="margin-right: 0%;">
+            <input matInput placeholder="Documento Identidad" maxlength="20" formControlName="documentoIdentidad">
+
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-content style="margin-top: -6%">
+        <div fxFlex="48%">
+          <mat-form-field>
+            <input matInput placeholder="Nombre" maxlength="20"     formControlName="nombre">
+
+          </mat-form-field>
+        </div>
+        <div fxFlex=4%></div>
+        <div fxFlex="48%">
+          <mat-form-field>
+            <input matInput placeholder="Apellido" maxlength="20" formControlName="apellido">
+
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-content style="margin-top: -6%">
+        <div fxFlex="48%">
+          <mat-form-field>
+            <input matInput placeholder="Correo" maxlength="20" formControlName="email">
+
+
+          </mat-form-field>
+        </div>
+        <div fxFlex=4%></div>
+        <div fxFlex="48%">
+          <mat-form-field>
+            <input matInput placeholder="Telefono" maxlength="12" formControlName="telefono">
+
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-content style="margin-top: -6%">
+        <div fxFlex="100%">
+          <mat-form-field>
+            <input matInput placeholder="Direccion" maxlength="50" formControlName="direccion">
+
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-content style="margin-top: -6%">
+          <div fxFlex="100%">
+              <mat-form-field>
+                  <input matInput [matDatepicker]="dia" placeholder="Fecha de Nacimiento" formControlName="fechaNacimiento" >
+                  <mat-datepicker-toggle matSuffix [for]="dia"></mat-datepicker-toggle>
+                  <mat-datepicker #dia></mat-datepicker>
+                </mat-form-field>
+            </div>
+        <div fxFlex=4%></div>
+
+        <div fxFlex="48%">
+          <mat-form-field>
+            <input matInput placeholder="tipo de usuario"  maxlength="50" formControlName="idRol">
+
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-content style="margin-top: -6%">
+        <div>
+          <p> Sexo:
+            <br>
+            <mat-radio-group labelPosition="before" style="margin-top: -20%" formControlName="sexo">
+
+              <mat-radio-button value="H" style="margin-right: 20px;">Masculino</mat-radio-button>
+              <mat-radio-button value="M">Femenino</mat-radio-button>
+
+            </mat-radio-group>
+          </p>
+        </div>
+      </mat-card-content>
+
+      <div></div>
+    </div>
+
+    <div fxFlex.gt-sm="30%">
+       <mat-card-content style="margin-top: -4%">
+          <div *ngIf="incluir; else actImagen" align="center" style="display: flex; justify-content: center;">
+              <img mat-card-image [src]="imagenDefecto" style="width:230px; height:230px; border-radius:50%;">
+            </div>
+        <ng-template #actImagen>
+          <img mat-card-image formControlName="imagenFormControl " style="width:315px;height: 200px;">
+        </ng-template>
+      </mat-card-content>
+      <mat-card-content style="margin-top: -15%;display: flex;flex-direction: column;align-items: center;">
+
+       <mat-card-actions>
+          <input type="file" style="display: none" #fileInput (change)="imagenEntrada($event.target.files)"
+            accept="image/*" placeholder="Seleccione una imagen" formControlName="imagenFormControl">
+          <button mat-raised-button class="secundary-back" style="width: 300px;text-align:center;color: white"(click)="fileInput.click()">Seleccionar Imagen</button>
+        </mat-card-actions>
+        <div>
+          <button style="width: 300px;text-align:center; margin-top: 3%;
+            background-color: #1f5f8b; color: white" mat-raised-button (click)="onCambioContra()">
+            Cambiar contraseña
+          </button>
+        </div>
+        <mat-card-content style="margin-top: 50px">
+          <button style=" width: 300px;margin-right: 0%; background-color: #1f5f8b; color: white"
+            mat-raised-button (click)=guardar()>
+            Guardar Cambios
+          </button>
+        </mat-card-content>
+      </mat-card-content>
+    </div>
+
+</div>

@@ -1,0 +1,123 @@
+<div fxLayout="row">
+  <div fxFlex="100%">
+    <mat-card>
+
+      <mat-card-header style="background:#1f5f8b">
+
+        <div mat-card-avatar class="example-header-image">
+          <a mat-button color="white" [routerLink]="['/agenda-servicio', {id: this.ordenId }]">
+            <mat-icon style="color:white">date_range</mat-icon>
+          </a>
+        </div>
+        <mat-card-title style="color:white">Reagendar Actividad</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between stretch" fxFlexFill>
+          <div fxFlex="300px" fxHide fxShow.gt-sm>
+            <div fxLayout="column" fxLayoutAlign="space-between stretch" fxFlexFill>
+              <div fxFlex="340px">
+                <owl-date-time-inline [pickerType]="'calendar'" [(ngModel)]="viewDate" [min]="datepicker"
+                  (ngModelChange)="getWeek(viewDate)">
+                </owl-date-time-inline>
+              </div>
+              <br>
+              <hr>
+              <div>
+                <mat-form-field [formGroup]="agendaForm">
+                  <mat-select placeholder="Tipo de incidencia" formControlName="idTipoIncidencia">
+                    <mat-option *ngFor="let incidencia of incidencias" [value]="incidencia.id">
+                      {{incidencia.nombre}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" [formGroup]="agendaForm">
+                  <textarea matInput placeholder="Descripción" formControlName="descripcionIncidencia"></textarea>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field [formGroup]="agendaForm">
+                  <input matInput [matDatepicker]="dia" placeholder="Día" formControlName="fechaActividad">
+                  <mat-datepicker-toggle matSuffix [for]="dia"></mat-datepicker-toggle>
+                  <mat-datepicker #dia></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field [formGroup]="agendaForm">
+                  <mat-select  placeholder="Horario" formControlName="idBloqueHorario">
+                    <mat-option *ngFor="let bloque of horas" [value]="bloque.id">
+                     {{bloque.descripcion}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <div>
+                  <button mat-raised-button color="primary" style="float: center;" (click)=AgregarIncidencia()
+                    cdkFocusInitial>Reagendar</button>
+                </div>
+                <div fxFlex="2%"></div>
+                <div>
+                  <button  mat-raised-button color="accent" style="float: center;"
+                    [routerLink]="['/agenda-servicio', {id: this.ordenId }]">Cancelar</button>
+                </div>
+
+              </div>
+            </div>
+            <br />
+
+            <br />
+            <br />
+          </div>
+          <div fxFlex="auto" fxFlexFill>
+            <div fxFlexFill>
+              <mat-toolbar color="accent">
+                <div fxLayout="row">
+                  <div fxFlex="50%" fxLayout="column">
+                    <div>
+                      <span fxHide fxShow.gt-xs>{{ viewDate | calendarDate:(view + 'ViewTitle'):'es' }}</span>
+                    </div>
+                    <div [ngStyle.xs]="{'font-size.px': 12}" [ngStyle.sm]="{'font-size.px': 12 }"
+                      [ngStyle.md]="{'font-size.px': 16}"> Ver:
+                      <button mat-button (click)="view = CalendarView.Week" [class.active]="view === CalendarView.Week"
+                        fxHide fxShow.gt-sm>
+                        Semana
+                      </button>
+                      <button mat-button (click)="view = CalendarView.Day" [class.active]="view === CalendarView.Day">
+                        Día
+                      </button>
+                    </div>
+                  </div>
+                  <div fxFlex="1 1 auto"></div>
+                  <div fxLayout="column">
+                    <div fxFlexAlign="end">
+                      <button mat-icon-button color="primary" mwlCalendarPreviousView [view]="view"
+                        [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                      </button>
+                      <button fxHide.xs mat-icon-button color="primary" mwlCalendarToday [(viewDate)]="viewDate">
+                        <mat-icon>today</mat-icon>
+                      </button>
+                      <button mat-icon-button color="button" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                        (viewDateChange)="activeDayIsOpen = false">
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </mat-toolbar>
+              <div [ngSwitch]="view">
+                <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+                  [locale]="locale" [dayStartHour]="StartHour" [dayEndHour]="EndHour" [refresh]="refresh">
+                </mwl-calendar-week-view>
+                <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+                  [locale]="locale" [dayStartHour]="StartHour" [dayEndHour]="EndHour" [refresh]="refresh">
+                </mwl-calendar-day-view>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<mat-card-header>
+  <div mat-card-avatar> <mat-icon >description</mat-icon> </div>
+  <mat-card-title >Detalle del Servicio</mat-card-title>
+</mat-card-header>
+
+<div fxLayout="row">
+  <form fxFlex="100%">
+    
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Marca del equipo:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{form.marca}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Modelo del equipo</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{form.modelo}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Cliente:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{form.cliente}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Motivo del reclamo:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{form.reclamo}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Condiciones de garantia:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <ul *ngFor="let condicion of condiciones">
+          <li>{{condicion.condicion}}</li>
+        </ul>
+      </div>
+    </div>
+
+  </form>
+</div>

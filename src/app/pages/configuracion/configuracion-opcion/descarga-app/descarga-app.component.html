@@ -1,0 +1,58 @@
+<mat-card>
+
+  <mat-card-header style="color: white" class="secundary-back">
+    <a mat-button color="white" [routerLink]="['/configuracion']">
+      <mat-icon>arrow_back</mat-icon>
+      <strong>Regresar</strong>
+    </a>
+    <a color="white" style="margin-top: 7px;margin-left: 40px">
+      <strong>Descarga de la aplicación</strong>
+    </a>
+  </mat-card-header>
+
+  <mat-card-content>
+  <div class="flex-container">
+    
+    <div style="align-content:center">
+      <mat-form-field class="descargapp">
+        <input matInput placeholder="Escriba un título para la descarga de aplicación" [formControl]="tituloControl">
+        <mat-error *ngIf="tituloControl.hasError('required')">
+          El titulo es <strong>Requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="descargapp">
+        <textarea matInput [formControl]="desControl" placeholder="Escriba una descripción para la descarga de aplicación" style="width:250px; height: 200px;"></textarea>
+        <mat-error *ngIf="desControl.hasError('required')">
+          El texto es <strong>Requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="secundary-back" style="width:100%; color:white" (click)=guardar()>Guardar</button>
+    </div>
+
+
+    <div style="align-content:center">
+      <mat-card-content style="margin-top:50px">
+        <div fxFlex="100" *ngIf="incluir; else actImagen" align="center">
+          <img mat-card-image [src]="imagenDefecto">
+        </div>
+        <ng-template #actImagen >
+          <img mat-card-image [src]="imagen" style="width:250px;height: 200px;">
+        </ng-template>
+
+        <mat-card-actions>
+            <input type="file" style="display: none" #fileInput (change)="imagenEntrada($event.target.files)" accept="image/*" placeholder="Seleccione una imagen" [formControl]="imagenFormControl">
+            <button mat-raised-button class="secundary-back" style="width:100%; color:white; margin-top: 1rem" (click)="fileInput.click()">Seleccionar Imagen</button>
+            <div *ngIf="imagenSeleccionada != null">
+              <div *ngIf="imagenFormControl.hasError('required')">
+                Descripción <strong>Requerida</strong>
+              </div>
+            </div>
+          </mat-card-actions> 
+
+      </mat-card-content> 
+
+    </div>
+  </div>
+  
+</mat-card-content>
+</mat-card>

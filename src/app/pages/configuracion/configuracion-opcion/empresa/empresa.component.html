@@ -1,0 +1,86 @@
+<mat-card>
+
+    <mat-card-header style="color: white" class="secundary-back">
+      <a mat-button color="white" [routerLink]="['/configuracion']">
+        <mat-icon>arrow_back</mat-icon>
+        <strong>Regresar</strong>
+      </a>
+      <a color="white" style="margin-top: 7px;margin-left: 40px">
+        <strong>Datos Basicos de la Empresa</strong>
+      </a>
+    </mat-card-header>
+  
+    <mat-card-content>
+    <div class="flex-container">
+      
+      <div>
+        <td>
+          <mat-form-field>
+            <span matPrefix>J - &nbsp;</span>
+            <input matInput type="number" placeholder="RIF de la empresa" [formControl]="rifControl" required>
+            <mat-error *ngIf="nombreControl.hasError('required')">
+              El RIF es <strong>Requerido</strong>
+            </mat-error>
+            <mat-icon matSuffix></mat-icon>
+          </mat-form-field>
+        </td>
+      
+      <mat-form-field>
+        <input matInput placeholder="Nombre de la empresa" [formControl]="nombreControl" required>
+        <mat-error *ngIf="nombreControl.hasError('required')">
+          El nombre es <strong>Requerido</strong>
+        </mat-error>
+        <mat-icon matSuffix>account_balance</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Correo"  maxlength="100" [formControl]="correoControl" required>
+        <mat-error *ngIf="correoControl.hasError('required')">
+          El correo es <strong>Requerido</strong>
+          </mat-error>
+          <mat-error *ngIf="correoControl.hasError('email')">
+            No posee el formato de correo
+          </mat-error>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input [(ngModel)]="telefono" type="tel" matInput placeholder="Numero de telefono">
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea [(ngModel)]="direccion" matInput placeholder="Direccion"></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button class="secundary-back" style="width:80%; color:white" (click)=actualizar()>Guardar</button>
+    </div>
+
+
+    <div class="img">
+      <mat-card-content style="margin-top:50px">
+        <div fxFlex="100" *ngIf="incluir; else actImagen" align="center">
+          <img mat-card-image [src]="imagenDefecto" style="width:230px; height:180px; border-radius:200px;">
+        </div>
+        <ng-template #actImagen >
+          <img mat-card-image [src]="imagen" style="width:230px; height:180px; border-radius:200px;">
+        </ng-template>
+
+        <mat-card-actions>
+            <input type="file" style="display: none" #fileInput (change)="imagenEntrada($event.target.files)" accept="image/*" placeholder="Seleccione una imagen" [formControl]="imagenFormControl">
+            <button mat-raised-button class="secundary-back" style="width:80%; color:white; margin-top: 1rem" (click)="fileInput.click()">Agregar Logo</button>
+            <div *ngIf="imagenSeleccionada != null">
+              <div *ngIf="imagenFormControl.hasError('required')">
+                Descripción <strong>Requerida</strong>
+              </div>
+            </div>
+          </mat-card-actions>
+
+      </mat-card-content>
+
+    </div>
+  </div>
+
+</mat-card-content>
+</mat-card>
+

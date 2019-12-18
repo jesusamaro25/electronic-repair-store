@@ -1,0 +1,21 @@
+<div style="max-height: 400px;" >
+
+    <div *ngFor="let item of data"
+    style="margin-bottom: 30px; display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5px 0 5px ;"
+    >
+    <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; margin-bottom: 20px;">
+      <img src="{{item.urlImagen}}" alt="img" width="45px" style="border-radius: 50%;margin-right: 2px; align-self: flex-start;">
+      <span>{{item.titulo}}</span>
+
+      <mat-icon *ngIf="!item.leida" style="color: red">notification_important</mat-icon>
+    </div>
+    <span
+      style="font-size: 10px; text-align: justify;padding-left: 10px; padding-right: 10px;">{{item.descripcion}}</span>
+    <mat-divider></mat-divider>
+    </div>
+
+  </div>
+

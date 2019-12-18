@@ -1,0 +1,130 @@
+<div class="container-fluid" style="margin-top: 25px">
+        <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                        <div class="card" [routerLink]="['/tareas-tecnico']">
+                                <button class="mat-elevation-z8" style="background-color: transparent; border-color: transparent; text-align: left;" >
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="icon-big icon-success text-center">
+                                                    <i class="ti-clipboard"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="numbers">
+                                                    <p>Tareas<br>Pendientes</p>{{totaltar}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                                <hr />
+                                                
+                                        </div>
+                                    </div>
+                                </button>
+                        </div>
+                </div>
+    
+                <div class="col-lg-3 col-sm-6">
+                        <div class="card" [routerLink]="['/servicios-tecnico']">
+                                <button class="mat-elevation-z8" style="background-color: transparent; border-color: transparent; text-align: left;">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="icon-big icon-info text-center">
+                                                    <i class="ti-folder"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="numbers">
+                                                    <p>Servicios<br>Asignados</p>{{totalser}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <hr/>
+                                            
+                                        </div>
+                                    </div>
+                                </button>
+                        </div>
+                </div>
+    
+                <div class="col-lg-3 col-sm-6">
+                        <div class="card" [routerLink]="['/calendario']">
+                                <button class="mat-elevation-z8" style="background-color: transparent; border-color: transparent; text-align: left;">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="icon-big icon-warning text-center">
+                                                    <i class="ti-calendar"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="numbers">
+                                                    <p>Mi<br>Calendario </p> 07/08  
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="footer">
+                                            <hr/>
+                                            
+                                        </div>
+                                    </div>
+                                </button>
+                        </div>
+                </div>
+    
+                <div class="col-lg-3 col-sm-6">
+                        <div class="card" [routerLink]="['/incidencias-tecnico']">
+                                <button class="mat-elevation-z8" style="background-color: transparent; border-color: transparent; text-align: left;">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="icon-big icon-danger text-center">
+                                                    <i class="ti-files"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="numbers">
+                                                    <p>Mis<br>Incidencias</p>{{totalinc}}                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <hr/>
+                                            
+                                        </div>
+                                    </div>
+                                </button>
+                        </div>
+                </div>
+        </div>
+                                             
+        <div class="row">
+                <div class="col-md-12" style="margin-top: 25px">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="title font-weight-bold">
+                                    Tipos de Servicios realizados
+                                </h5>
+                                <p class="category">2019</p>
+                            </div>  
+                            <div class="content">
+                                <canvas baseChart
+                                        [datasets]="barChartData"
+                                        [colors]="barChartData"
+                                        [labels]="barChartLabels"
+                                        [options]="barChartOptions"
+                                        [legend]="barChartLegend"
+                                        [chartType]="barChartType"
+                                        height="60"
+                                        width="200">
+                                </canvas>
+                            </div>
+                        </div>
+                </div>
+        </div>
+
+</div>
+                                                                                    

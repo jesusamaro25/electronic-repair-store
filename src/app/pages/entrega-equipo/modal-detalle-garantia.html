@@ -1,0 +1,57 @@
+<h1 mat-dialog-title >Entrega de Equipo Reparado</h1>
+<div mat-dialog-content>
+  <mat-tab-group >
+    <mat-tab fxFlex="30%">
+      <ng-template mat-tab-label >
+        <mat-icon>check</mat-icon> Terminos de Garantía
+      </ng-template>
+      <div *ngIf="!loading">
+
+        <p style="margin-top: 20px;">
+          <mat-form-field>
+            <mat-select [formControl]="actiMultiCtrl" placeholder="Selecciona los terminos de garantía que aplican" [multiple]="true" #multiSelect>
+              <ngx-mat-select-search [formControl]="actiMultiFilterCtrl" [placeholderLabel]="'Buscar Actividad'" [noEntriesFoundLabel]="'No hay Resultados'"></ngx-mat-select-search>
+              <mat-option *ngFor="let actividad of filteredActiMulti | async" [value]="actividad">
+                {{actividad.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="actiMultiCtrl.hasError('required')">
+              Los terminos son <strong>requeridos</strong>
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          Terminos de Garantía:
+        </p>
+        <ul *ngFor="let actividad of actiMultiCtrl?.value">
+          <li>{{actividad.name}}</li>
+        </ul>
+
+      </div>
+
+      <div align="center" *ngIf="loading">
+        <mat-progress-spinner
+          [color]="color"
+          [mode]="mode">
+        </mat-progress-spinner>
+      </div>
+    </mat-tab>
+    <mat-tab fxFlex="30%">
+        <ng-template mat-tab-label >
+          <mat-icon>check</mat-icon> Confirmación de entrega
+        </ng-template>
+        <h6 mat-dialog-title style="margin-top: 20px;" >Detalle de Garantía</h6>
+        <ul *ngFor="let actividad of actiMultiCtrl?.value">
+          <li>{{actividad.name}}</li>
+        </ul>
+        <mat-form-field style="margin-top: 10px">
+          <input matInput type="number" placeholder="Costo del servicio" [formControl]="costoControl" readonly value="20000">
+        </mat-form-field>
+        <div>
+          <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=finalEntrega()>Guardar</button>
+        </div>
+
+      </mat-tab>
+
+  </mat-tab-group>
+</div>

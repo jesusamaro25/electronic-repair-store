@@ -1,0 +1,103 @@
+ <mat-card style="margin-top: 25px">
+
+    <mat-card-header style="color: white" class="secundary-back">
+        <a color="white">
+            <strong>Tiempo Promedio</strong>
+        </a>
+    </mat-card-header>
+
+    <mat-card-content>
+        <a style="margin-left: 40px"> <strong>Fecha</strong> </a>
+        <a style="margin-left: 230px"> <strong>Categoría</strong> </a>
+        <div fxLayout="row" fxLayoutGap="10px" style="margin-left: 40px">
+            <div fxFlex="12%"> 
+                <mat-form-field color="accent"> 
+                    <mat-label>Desde</mat-label>
+                    <input matInput [matDatepicker]="picker1"  [formControl]="inicioControl">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>  
+            </div>
+            <div fxFlex="12%">
+                <mat-form-field color="accent">
+                    <mat-label>Hasta</mat-label>
+                    <input matInput [matDatepicker]="picker2"  [formControl]="finControl">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div fxFlex="18%">
+                <mat-form-field style="margin-left: 35px">
+                    <mat-select [formControl]="cateControl" placeholder="Categoría">
+                        <mat-option  value="T" >Todas</mat-option>
+                        <mat-option *ngFor="let categoria of categorias" [value]="categoria" >{{categoria.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxFlex="5%"></div> 
+            
+            <div fxFlex="5%"></div> 
+        </div>
+
+        <div style="margin-left: 35px">
+            <button mat-raised-button class="btn btn-info btn-fill" (click)="CargarTabla()">VER</button>
+            <button style="margin-left: 15px" (click)="downloadImagePDF()" mat-raised-button class="btn btn-info btn-fill">PDF</button>
+        </div>
+
+        <div class="img" style="margin-left: 40px; margin-top:10px">
+            <div id="content">
+
+                <div fxLayout="row" fxLayoutGap="20px">
+
+                    <div *ngIf="inicioControl.valid">
+                        <strong>Desde: {{inicioControl.value | date: 'dd/MM/yyyy'}}</strong>
+                    </div>
+                    <div *ngIf="finControl.valid">
+                        <strong>Hasta: {{finControl.value | date: 'dd/MM/yyyy'}}</strong>
+                    </div>
+                    <div *ngIf="cateControl.valid">
+                        <strong *ngIf="cateControl.value!='T'">Categoria: {{cateControl.value.nombre}}</strong>
+                        <strong *ngIf="cateControl.value=='T'">Categoria: Todas</strong>
+                    </div>
+            
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <canvas baseChart 
+                      [datasets]="barChartData"
+                      [colors]="barChartData"
+                      [labels]="barChartLabels"
+                      [options]="barChartOptions"
+                      [legend]="barChartLegend"
+                      [chartType]="barChartType"
+                      height="50"
+                      width="180">
+                    </canvas>
+                    <br>
+                    <br>
+                </div>
+
+                <table class="tabla mat-elevation-z8" mat-table [dataSource]="dataSource" style="margin-left: 80px; margin-top:20px">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="Tiempo">
+                        <th mat-header-cell *matHeaderCellDef> Tiempo En </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Tiempo}} </td>
+                    </ng-container>
+
+                    <!-- Tecnico Column -->
+                    <ng-container matColumnDef="Dias">
+                        <th mat-header-cell *matHeaderCellDef> Horas </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Dias}} </td>
+                    </ng-container>
+
+                    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+            </div>
+        </div>
+
+
+    </mat-card-content> 
+</mat-card>

@@ -1,0 +1,70 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Modelo De Equipo</span>
+</mat-toolbar>
+
+<div *ngIf="!loading">
+
+    <mat-card>
+      <mat-card-content>
+        <div fxFlex="100" *ngIf="incluir; else actImagen" align="center">
+          <img mat-card-image [src]="imagenDefecto" style="width:250px;height: 200px;">
+        </div>
+        <ng-template #actImagen>
+          <img mat-card-image [src]="imagen" style="width:250px;height: 200px;">
+        </ng-template>
+      </mat-card-content>
+      <mat-card-actions>
+        <input type="file" style="display: none" #fileInput (change)="imagenEntrada($event.target.files)" accept="image/*" placeholder="Seleccione una imagen" [formControl]="imagenFormControl">
+        <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)="fileInput.click()">Seleccionar Imagen</button>
+        <div *ngIf="imagenSeleccionada != null">
+          <div *ngIf="imagenFormControl.hasError('required')">
+            Imegen <strong>Requerida</strong>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+  <mat-form-field style="margin-top: 10px">
+    <input matInput #nombre placeholder="Descripcion" maxlength="50" [formControl]="desControl">
+    <mat-error *ngIf="desControl.hasError('required')">
+      La descripcion es <strong>Requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <mat-select placeholder="Seleccione un tipo de servicio" [formControl]="tservControl">
+        <mat-option *ngFor="let serv of tiposervicio" [value]="serv.id">
+            {{serv.nombre}}
+        </mat-option>
+    </mat-select>
+    <mat-error *ngIf="tservControl.hasError('required')">
+      Escoge un <strong>Tipo de servicio</strong>
+    </mat-error>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <mat-select placeholder="Seleccione un tipo de equipo" [formControl]="tequiControl">
+        <mat-option *ngFor="let equi of tipoequipo" [value]="equi.id">
+            {{equi.nombre}}
+        </mat-option>
+    </mat-select>
+    <mat-error *ngIf="tequiControl.hasError('required')">
+      Escoge un <strong>Tipo de equipo</strong>
+    </mat-error>
+  </mat-form-field>
+  
+  <div *ngIf="incluir; else act">
+    <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=registrar()>Agregar</button>
+  </div>
+  <ng-template #act>
+    <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=actualizar() cdkFocusInitial>Actualizar</button>
+  </ng-template>
+
+</div>
+
+<div align="center" *ngIf="loading">
+  <mat-progress-spinner
+    [color]="color"
+    [mode]="mode">
+  </mat-progress-spinner>
+</div>

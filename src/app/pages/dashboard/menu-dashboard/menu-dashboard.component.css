@@ -1,0 +1,9 @@
+button{
+    transform: scale(1.3);
+}
+
+.mat-card {
+  background: #edf4f8;
+  font-color: #000000;
+}
+

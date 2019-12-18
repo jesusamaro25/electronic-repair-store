@@ -1,0 +1,75 @@
+<mat-card>
+
+  <mat-card-header style="color: white" class="secundary-back">
+    <a mat-button color="white" [routerLink]="['/servicios-tecnico']">
+      <mat-icon>arrow_back</mat-icon>
+      <strong>Regresar</strong>
+    </a>
+    <a color="white" style="margin-top: 7px;margin-left: 33%">
+      <strong>AGENDA</strong>
+    </a>
+  </mat-card-header>
+
+  <div class="mat-elevation-z8">
+   <mat-card style="border: none; background: none">
+      <mat-grid-list cols="4" rowHeight="4:1">
+        <mat-grid-tile class="secundary-font">
+          <div align="center"></div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" class="secundary-font">
+          <div align="center"></div>
+        </mat-grid-tile>
+        <mat-grid-tile class="secundary-font">
+          <div align="left">
+              <button mat-button class="secundary-font" [routerLink]="['/agendar',{id: this.id }]">
+                  <mat-icon>add</mat-icon>
+                  <strong>Agendar Tarea</strong>
+                </button>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+
+<mat-card style="border: #1891ac 5px outset;">
+  <mat-grid-list cols="4" rowHeight="8:1">
+    <mat-grid-tile class="secundary-font">
+      <div align="center">
+        Fecha
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2" class="secundary-font">
+      <div align="center">
+        Actividad
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile class="secundary-font">
+      <div align="center">
+        Acciones
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+    <mat-card *ngFor="let tarea of tareas" style="border: #1891ac 5px outset;">
+      <mat-grid-list cols="4" rowHeight="3:1">
+        <mat-grid-tile class="secundary-font">
+          {{tarea.fechaActividad}}<br>
+          {{tarea.bloqueHorario.descripcion}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" class="secundary-font">
+          <div align="center">
+            {{tarea.descripcion}}
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="aprobar(tarea)">
+            <mat-icon class="green-icon" matTooltip="Tarea Completada">assignment_turned_in</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Example icon-button with a heart icon" [routerLink]="['/reagendar',{id: tarea.id, ordenId: this.id }]">
+            <mat-icon class="red-icon" matTooltip="Registrar Incidencia">warning</mat-icon>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+
+</div>
+</mat-card>

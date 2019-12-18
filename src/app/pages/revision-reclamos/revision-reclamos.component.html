@@ -1,0 +1,49 @@
+<mat-card>
+
+  <mat-card-header style="color: white" class="secundary-back">
+
+    <a color="white" style="margin-top: 7px;margin-left: 40px">
+      <strong>Revision por reclamos</strong>
+    </a>
+
+  </mat-card-header>
+
+  <div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource" >
+
+      <ng-container matColumnDef="equipo">
+        <th mat-header-cell *matHeaderCellDef style="font-size:1rem"> Equipo </th>
+        <td mat-cell *matCellDef="let row"> {{row.modelo_nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="problema">
+        <th mat-header-cell *matHeaderCellDef style="font-size:1rem"> Motivo del reclamo </th>
+        <td mat-cell *matCellDef="let row"> {{row.problema}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef  style="font-size:1rem">Acciones</th>
+        <td mat-cell *matCellDef="let row">
+
+            <a mat-icon-button matTooltip="Ver Detalles"  (click)="showDetalles(row)">
+              <mat-icon class="secundary-font">description</mat-icon>                   
+            </a>
+  
+            <a mat-icon-button matTooltip="Revision del equipo"  (click)="showRevision(row)">
+              <mat-icon class="secundary-font">rate_review</mat-icon>                   
+            </a>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]"></mat-paginator>
+
+  </div>
+
+</mat-card>

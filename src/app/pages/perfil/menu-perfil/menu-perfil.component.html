@@ -1,0 +1,41 @@
+<mat-card >
+
+  <mat-card-content>
+
+    <mat-tab-group>
+
+        <mat-tab>
+      
+            <ng-template mat-tab-label>
+                <mat-icon>person</mat-icon> Perfil
+            </ng-template>
+
+            <app-usuario-perfil style="height: auto"></app-usuario-perfil>
+      
+        </mat-tab>
+      
+        <mat-tab *ngIf="user.rol.tipo == 'cliente'">
+      
+          <ng-template mat-tab-label>
+              <mat-icon>tag_faces</mat-icon> Preferencias
+          </ng-template>
+      
+          <app-usuario-preferencia></app-usuario-preferencia>
+      
+        </mat-tab>
+      
+        <mat-tab *ngIf="user.rol.tipo == 'tecnico'">
+      
+          <ng-template mat-tab-label>
+              <mat-icon>build</mat-icon> Especialidades
+          </ng-template>
+
+          <app-usuario-especialidad></app-usuario-especialidad>
+
+        </mat-tab>
+      
+      </mat-tab-group>
+
+  </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,28 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Caracteristicas</span>
+</mat-toolbar>
+
+<p>
+  <mat-form-field>
+    <mat-select [formControl]="actiMultiCtrl" placeholder="Selecciona las caracteristicas " [multiple]="true" #multiSelect>
+      <ngx-mat-select-search [formControl]="actiMultiFilterCtrl" [placeholderLabel]="'Buscar caracteristica '" [noEntriesFoundLabel]="'No hay Resultados'"></ngx-mat-select-search>
+      <mat-option *ngFor="let caracteristica of filteredActiMulti | async" [value]="caracteristica">
+        {{caracteristica.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="actiMultiCtrl.hasError('required')">
+      Las caracteristicas son <strong>requeridas</strong>
+    </mat-error>
+  </mat-form-field>
+</p>
+<p>
+  Caracteristicas Seleccionadas:
+</p>
+<ul *ngFor="let caracteristica of actiMultiCtrl?.value">
+  <li>{{caracteristica.name}}</li>
+</ul>
+ 
+
+<div>
+  <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=guardar()>Guardar</button>
+</div>

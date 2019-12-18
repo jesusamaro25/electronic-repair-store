@@ -1,0 +1,123 @@
+<mat-card-header>
+  <div mat-card-avatar> <mat-icon >description</mat-icon> </div>
+  <mat-card-title >Detalle del servicio</mat-card-title>
+</mat-card-header>
+  
+<div fxLayout="row">
+  <form fxFlex="100%">
+    
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Marca del equipo:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{form.marca}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Modelo del equipo</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{form.modelo}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Problema del equipo:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{form.problema}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Servicio Solicitado:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{form.servicio}}</label>
+      </div>
+    </div>
+    
+    <div fxLayout="row" *ngIf="data.promocion.nombre==undefined">
+      <div fxFlex="45%">
+        <label>
+          <strong>Total:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.costo_servicio+data.costo_revision}}</label>
+      </div>
+    </div>
+
+    <!--total con promocion-->
+
+    <div *ngIf="data.promocion.nombre!=undefined">
+
+      <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong>Promocion:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label>{{data.promocion.nombre}}</label>
+        </div>
+      </div>
+
+      <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong>Sub Total:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label>{{data.costo_servicio+data.costo_revision}}</label>
+        </div>
+      </div>
+
+      <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong style="color: #1f5f8b">Descuento:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label style="color: #1f5f8b">{{descuento}} ( {{data.promocion.descuento.nombre}} )</label>
+        </div>
+      </div>
+
+      <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong>Total:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label>{{total}}</label>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

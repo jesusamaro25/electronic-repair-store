@@ -1,0 +1,25 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Reclamo</span>
+</mat-toolbar>
+
+<mat-form-field>
+  <mat-select placeholder="Seleccione un tipo de reclamo" [formControl]="tipoControl">
+      <mat-option *ngFor="let tipo of tipos" [value]="tipo.id">
+         {{tipo.nombre}}
+      </mat-option>
+  </mat-select>
+  <mat-error *ngIf="tipoControl.hasError('required')">
+    Escoge un <strong>Tipo</strong>
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field style="margin-top: 10px">
+  <textarea matInput #nombre placeholder="Descripcion del reclamo" style="height: 150px" [formControl]="textoControl"></textarea>
+  <mat-error *ngIf="textoControl.hasError('required')">
+    La Descripcion es <strong>Requerida</strong>
+  </mat-error>
+</mat-form-field>
+
+<div>
+  <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=reclamo()>Enviar Reclamo</button>
+</div>

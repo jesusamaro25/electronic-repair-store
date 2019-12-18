@@ -1,0 +1,67 @@
+<mat-card>
+
+  <mat-card-header style="color: white" class="secundary-back">
+
+    <a mat-button color="white" [routerLink]="['/dashboard']">
+      <mat-icon>arrow_back</mat-icon>
+      <strong>Regresar</strong>
+    </a>
+
+    <a color="white" style="margin-top: 7px;margin-left: 40px">
+      <strong>Equipos por entregar</strong>
+    </a>
+
+  </mat-card-header>
+
+  <mat-toolbar style="background: none" class="mat-elevation-z8">
+    <mat-form-field class="search-input" style="margin-left: 30px;width: 300px">
+      <mat-icon matPreffix style="margin-left: 10px">search</mat-icon>
+      <input matInput (keyup)="filtro($event.target.value)" [(ngModel)]="value">
+    </mat-form-field>
+  </mat-toolbar>
+
+  <div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef style="font-size:1rem"> Cliente </th>
+        <td mat-cell *matCellDef="let row"> {{row.cliente_nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="equipo">
+        <th mat-header-cell *matHeaderCellDef style="font-size:1rem"> Equipo </th>
+        <td mat-cell *matCellDef="let row"> {{row.modelo_nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="marca">
+        <th mat-header-cell *matHeaderCellDef style="font-size:1rem"> Resultado </th>
+        <td mat-cell *matCellDef="let row">{{row.estatus === 'A' && row.estatus_p === 'A' ? 'Reparado' : 'No reparado'}}</td>
+
+      </ng-container>
+
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef  style="font-size:1rem">Acciones</th>
+        <td mat-cell *matCellDef="let row">
+
+          <a mat-icon-button matTooltip="Ver Detalles"  (click)="verDetalle(row)">
+            <mat-icon class="secundary-font">description</mat-icon>
+          </a>
+          <a mat-icon-button matTooltip="Entregar equipo"  (click)="showGarantia(row)">
+            <mat-icon class="green-icon">done_all</mat-icon>
+          </a>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]"></mat-paginator>
+
+  </div>
+
+</mat-card>

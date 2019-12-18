@@ -1,0 +1,62 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Revision</span>
+</mat-toolbar>
+
+<div *ngIf="!loading">
+
+  <mat-form-field style="margin-top: 10px">
+      <textarea matInput placeholder="Diagnostico" [formControl]="diagnosticoControl" style="height: 150px">
+      </textarea>  
+      <mat-error *ngIf="diagnosticoControl.hasError('required')">
+        El diagnostico es <strong>Requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-select [formControl]="resulControl" placeholder="Resultado del diagnostico" (selectionChange)="cargar()">
+        <mat-option value="A">Equipo Reparable</mat-option>
+        <mat-option value="R">Equipo No Reparable</mat-option>
+      </mat-select>
+      <mat-error *ngIf="resulControl.hasError('required')">
+        El resultado es<strong>Requerido</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="bool">
+      <mat-select placeholder="Escoge un motivo" [formControl]="motiControl">
+          <mat-option *ngFor="let motivo of motivos" [value]="motivo.id">
+              {{motivo.descripcion}}
+          </mat-option>
+      </mat-select>
+      <mat-error *ngIf="motiControl.hasError('required')">
+        Escoge un <strong>Motivo</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field style="margin-top: 10px">
+      <input matInput type="number" placeholder="Costo de revision" [formControl]="costoControl">
+      <mat-error *ngIf="costoControl.hasError('required')">
+        El costo es <strong>Requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <div style="margin-top: 10px">
+      <strong>
+        El costo actual de revision esta entre {{min}} 
+        y {{max}}
+      </strong>
+    </div>
+    
+    <div>
+      <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=doRevision()>Guardar</button>
+    </div>
+
+</div>
+
+<div align="center" *ngIf="loading">
+  <mat-progress-spinner
+    [color]="color"
+    [mode]="mode"
+      >
+  </mat-progress-spinner>
+</div>

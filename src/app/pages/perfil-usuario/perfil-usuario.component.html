@@ -1,0 +1,156 @@
+<mat-card-header>
+</mat-card-header>
+<mat-card-content>
+
+      <div fxLayout="row">
+        <div fxFlex.gt-sm="70%" >
+            <mat-card-content>
+                <div fxFlex=8%>
+                  <mat-form-field>
+                      <mat-label >Tipo</mat-label>
+                      <mat-select [formControl]="nacionalidadcControl">
+                        <mat-option *ngFor="let tipo1 of tipoCliente" [value]="tipo1.value">
+                          {{tipo1.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+                    <div fxFlex=4%></div>
+              <div fxFlex="36%">
+                <mat-form-field style="margin-right: 0%;"  >
+                    <input matInput placeholder="Documento Identidad" maxlength="20" [formControl]="idControl"  >
+                    <mat-error *ngIf="idControl.hasError('required')">
+                        El  Id de Usuario es <strong>Requerido</strong>
+                      </mat-error>
+                </mat-form-field>
+              </div>
+            </mat-card-content> 
+            <mat-card-content style="margin-top: -7%">
+              <div fxFlex="48%">
+                <mat-form-field>
+                    <input matInput placeholder="Nombre"  maxlength="20"  [formControl]="nombreControl" >
+                  <mat-error *ngIf="nombreControl.hasError('required')">
+                      El nombre es <strong>Requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+              </div>
+            <div fxFlex=4%></div>
+              <div fxFlex="48%">
+                <mat-form-field> 
+                  <input matInput placeholder="Apellido"   maxlength="20"   formControl]="apellidoControl" >
+                  <mat-error *ngIf="apellidoControl.hasError('required')">
+                      El apellido es <strong >Requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+              </div>
+            </mat-card-content>
+            <mat-card-content style="margin-top: -7%">
+              <div fxFlex="48%">
+                <mat-form-field>
+                  <input matInput placeholder="Correo"  maxlength="20" [formControl]="correoControl" >
+                  <mat-error *ngIf="correoControl.hasError('required')">
+                      El correo es <strong>Requerido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="correoControl.hasError('email')">
+                        No posee el formato de correo
+                     </mat-error>
+                </mat-form-field>
+              </div>
+            <div fxFlex=4%></div>
+              <div fxFlex="48%">
+                <mat-form-field>
+                  <input matInput placeholder="Telefono"  maxlength="12" [formControl]="telefonoControl">
+                  <mat-error *ngIf="telefonoControl.hasError('required')">
+                      El telefono es <strong>Requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+              </div>
+            </mat-card-content>
+            <mat-card-content style="margin-top: -7%">
+              <div fxFlex="100%">
+                <mat-form-field>
+                  <input matInput placeholder="Direccion"  maxlength="50" [formControl]="direccionControl" >
+                  <mat-error *ngIf="direccionControl.hasError('required')">
+                      El La direccion es <strong>Requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+              </div>
+            </mat-card-content>
+            <mat-card-content style="margin-top: -7%">
+            <div fxFlex="48%">
+              <mat-form-field >
+                  <input matInput [matDatepicker]="picker" placeholder="Ingrese Fecha de Nacimiento" [formControl]="nacimientoControl"  >
+                  <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="nacimientoControl.hasError('required')">
+                     La fecha es <strong>Requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+          </div>
+          <div fxFlex=4%></div>
+
+          <div fxFlex="48%">
+            <mat-form-field >
+                <mat-label  >Tipo de Usuario</mat-label>
+                <mat-select [value]="id_rol" [formControl]="tipoControl">
+                  <mat-option *ngFor="let tipo of tipoUsuario" [value]="tipo.value"  >
+                    {{tipo.viewValue}} 
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        </mat-card-content>
+        <mat-card-content style="margin-top: -9%">
+          <div >
+          <p > Sexo: 
+            <br>
+            <mat-radio-group labelPosition="before" style="margin-top: -20%" [formControl]="sexoControl"  >
+
+                <mat-radio-button value="1">" Masculino"</mat-radio-button>
+                <mat-radio-button value="2">" Femenino"</mat-radio-button>
+
+              </mat-radio-group>
+              </p>
+          </div>
+          </mat-card-content>
+
+          <div></div>
+
+        </div>
+        <div fxFlex.gt-sm="30%">
+        <mat-card-content>
+            <div fxFlex="100" *ngIf="incluir; else actImagen" align="center">
+              <img mat-card-image [src]="imagenDefecto" style="width:315px;height: 200px;">
+            </div>
+            <ng-template #actImagen >
+              <img mat-card-image [src]="imagen" style="width:315px;height: 200px;">
+            </ng-template>
+          </mat-card-content>
+          <mat-card-content style="margin-top: -15%">
+          <mat-card-actions>
+            <input type="file" style="display: none" #fileInput (change)="imagenEntrada($event.target.files)" accept="image/*" placeholder="Seleccione una imagen" [formControl]="imagenFormControl">
+            <button mat-raised-button class="secundary-back" style="width: 300px;text-align:center;color: white" (click)="fileInput.click()">Seleccionar Imagen</button>
+            <div *ngIf="imagenSeleccionada != null">
+              <div *ngIf="imagenFormControl.hasError('required')">
+                Descripción <strong>Requerida</strong>
+              </div>
+            </div>
+          </mat-card-actions>  
+          
+          <div >
+            <button style="width: 300px;text-align:center; margin-top: 3%;margin-left: 9px;
+            background-color: #1f5f8b; color: white" mat-raised-button (click)="onCambioContra()" 
+               >
+              Cambiar contraseña
+            </button>
+
+          </div>
+        </mat-card-content>
+      </div>
+</div>
+<mat-card-content style="margin-top: -50px">
+<button style="margin-left: 40%;width: 300px;margin-right: auto;background-color: #1f5f8b; color: white" mat-raised-button (click)="onRegistrar()">
+ Guardar Cambios
+</button>
+</mat-card-content>
+</mat-card-content>

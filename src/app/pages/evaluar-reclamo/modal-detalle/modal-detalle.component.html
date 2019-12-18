@@ -1,0 +1,76 @@
+<mat-card-header>
+  <div mat-card-avatar> <mat-icon >description</mat-icon> </div>
+  <mat-card-title >Motivo del Reclamo</mat-card-title>
+</mat-card-header>
+
+<div fxLayout="row">
+  <form fxFlex="100%">
+    
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Cliente:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="1%">
+     </div>
+     <label>{{form.cliente_nombre}}</label>
+    </div>
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Fecha de Reclamo:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="1%">
+        <label>{{form.fecha_reclamo}}</label>
+      </div>
+    </div>
+    <div fxLayout="row">
+        <div fxFlex="45%">
+          <label>
+            <strong>Servicio:</strong>
+          </label>&nbsp;
+        </div>
+        <div fxFlex="1%"></div>
+        <div fxFlex="74%">
+          <label>{{form.tipo_reclamo}}</label>
+        </div>
+      </div>
+      <div fxLayout="row">
+          <div fxFlex="45%">
+            <label>
+              <strong>Marca:</strong>
+            </label>&nbsp;
+          </div>
+          <div fxFlex="1%"></div>
+          <div fxFlex="74%">
+            <label>{{form.marca_nombre}}</label>
+          </div>
+        </div>
+        <div fxLayout="row">
+            <div fxFlex="45%">
+              <label>
+                <strong>Modelo:</strong>
+              </label>&nbsp;
+            </div>
+            <div fxFlex="1%"></div>
+            <div fxFlex="74%">
+              <label>{{form.modelo_nombre}}</label>
+            </div>
+          </div>
+          <div fxLayout="row">
+              <div fxFlex="45%">
+                <label>
+                  <strong>Descripcion:</strong>
+                </label>&nbsp;
+              </div>
+              <div fxFlex="1%"></div>
+              <div fxFlex="74%">
+                <label>{{form.descripcion}}</label>
+              </div>
+            </div>
+  </form>
+</div>

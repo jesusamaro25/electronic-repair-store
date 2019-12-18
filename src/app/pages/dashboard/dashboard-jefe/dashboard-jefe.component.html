@@ -1,0 +1,107 @@
+<div class="container-fluid" style="margin-top: 25px">
+        <div class="row">
+                <div class="col-lg-3">
+                        <div class="card" [routerLink]="['/evaluar-solicitud']">
+                                <button class="mat-elevation-z8" style="background-color: transparent; border-color: transparent; text-align: left;" >
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="icon-big icon-success text-center">
+                                                    <i class="ti-layout-tab"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="numbers">
+                                                    <p>Solicitudes<br>Pendientes</p>{{total}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <hr/>
+                                              
+                                        </div>
+                                    </div>
+                                </button>
+                        </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                        <div class="card" [routerLink]="['/evaluar-reclamo']">
+                                <button class="mat-elevation-z8" style="background-color: transparent; border-color: transparent; text-align: left;">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="icon-big icon-info text-center">
+                                                    <i class="ti-info-alt"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="numbers">
+                                                    <p>Reclamos<br>Recibidos</p> {{reclamos}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <hr/>
+                                            
+                                        </div>
+                                    </div>
+                                </button>
+                        </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                        <div class="card" [routerLink]="['/ver-calificacion']">
+                                <button class="mat-elevation-z8" style="background-color: transparent; border-color: transparent; text-align: left;">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="icon-big icon-warning text-center">
+                                                    <i class="ti-star"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="numbers">
+                                                    <p>Calificación<br>de Servicios</p> {{calificaciones}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <hr/>
+                                            
+                                        </div>
+                                    </div>
+                                </button>
+                        </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                        <div class="card" [routerLink]="['/dashboard']">
+                                <button class="mat-elevation-z8" style="background-color: transparent; border-color: transparent; text-align: left;"> 
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="icon-big icon-danger text-center">
+                                                    <i class="ti-check-box"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="numbers">
+                                                    <p>Usuarios<br>Captados</p>{{usuarios}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <hr/>
+                                            
+                                        </div>
+                                    </div>
+                                </button>
+                        </div>
+                </div>
+        </div>
+        
+
+    <app-chart-solicitudes> </app-chart-solicitudes>
+
+</div>

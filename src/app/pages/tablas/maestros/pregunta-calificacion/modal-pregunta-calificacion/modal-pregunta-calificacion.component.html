@@ -1,0 +1,29 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Pregunta de Calificacion</span>
+</mat-toolbar>
+
+<div *ngIf="!loading">
+
+  <mat-form-field style="margin-top: 10px">
+    <textarea matInput #pregunta placeholder="Pregunta" maxlength="500" [formControl]="preguntaControl"></textarea>
+    <mat-error *ngIf="preguntaControl.hasError('required')">
+      La Pregunta es <strong>Requerida</strong>
+    </mat-error>
+  </mat-form-field>
+  
+  
+  <div *ngIf="incluir; else act">
+    <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=registrar()>Agregar</button>
+  </div>
+  <ng-template #act>
+    <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=actualizar() cdkFocusInitial>Actualizar</button>
+  </ng-template>
+
+</div>
+
+<div align="center" *ngIf="loading">
+  <mat-progress-spinner
+    [color]="color"
+    [mode]="mode">
+  </mat-progress-spinner>
+</div>

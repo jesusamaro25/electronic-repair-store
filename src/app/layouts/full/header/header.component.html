@@ -1,0 +1,17 @@
+
+<!-- ============================================================== -->
+<!-- Profile - style you can find in header.scss -->
+<!-- ============================================================== -->
+
+<button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5"> <img src="{{user.urlFoto}}" alt="user" class="profile-pic"> </button>
+<mat-menu #profile="matMenu" class="mymegamenu">
+
+    <button mat-menu-item [routerLink]="['/menu-perfil']">
+        <mat-icon>account_box</mat-icon> Perfil
+    </button>
+    <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon> Cerrar Sesion
+    </button>
+</mat-menu>
+
+

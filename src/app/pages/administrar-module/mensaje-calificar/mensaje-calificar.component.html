@@ -1,0 +1,26 @@
+<mat-card>
+
+  <mat-card-header style="color: white" class="secundary-back">
+    <a mat-button color="white" [routerLink]="['/administrar']">
+      <mat-icon>arrow_back</mat-icon>
+      <strong>Regresar</strong>
+    </a>
+    <a color="white" style="margin-top: 7px;margin-left: 40px">
+      <strong>Mensaje de calificar</strong>
+    </a>
+  </mat-card-header>
+
+  <mat-card-content>
+  <div class="flex-container">
+    
+    <div style="align-content:center">
+      <mat-form-field class="mensaje">
+        <textarea matInput placeholder="Escriba su mensaje" [formControl]="textoControl"></textarea>
+      </mat-form-field>
+      <button mat-raised-button class="secundary-back" (click)=guardar()>Guardar</button>
+    </div>
+
+  </div>
+  
+</mat-card-content>
+</mat-card>

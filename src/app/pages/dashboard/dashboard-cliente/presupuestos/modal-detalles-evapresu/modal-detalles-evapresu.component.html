@@ -1,0 +1,84 @@
+<mat-card-header>
+  <div mat-card-avatar> <mat-icon >description</mat-icon> </div>
+  <mat-card-title >Detalle de la Solicitud</mat-card-title>
+</mat-card-header>
+
+
+<div fxLayout="row">
+  <form fxFlex="100%">
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Servicio Requerido:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.servicio_nombre}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Modelo Del Equipo:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.modelo_nombre}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Marca Del Equipo:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.marca_nombre}}</label>
+      </div>
+    </div>
+    
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Motivo de la solicitud:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.problema}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Diagnostico:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.diagnostico}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row" *ngIf="data.promocion.nombre!=undefined">
+      <div fxFlex="45%">
+        <label>
+          <strong style="color: #1f5f8b">Promocion:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label style="color: #1f5f8b">{{data.promocion.nombre}}</label>
+      </div>
+    </div>
+
+  </form>
+</div>

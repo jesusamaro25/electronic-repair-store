@@ -1,0 +1,58 @@
+<mat-toolbar class="secundary-back" style="height: 40px;color: white">
+  <span style="font-size: 15px">Caracteristica</span>
+</mat-toolbar>
+
+<div *ngIf="!loading">
+
+  <mat-form-field style="margin-top: 10px">
+    <input matInput #servicio maxlength="50" [formControl]="tituloControl">
+    <mat-error *ngIf="tituloControl.hasError('required')">
+      El titulo es <strong>Requerido</strong>
+    </mat-error>
+  </mat-form-field> 
+  
+  <mat-form-field style="margin-top: 10px">
+    <textarea matInput #descripcion placeholder="Descripcion" maxlength="500" [formControl]="descripcionControl"></textarea>
+    <mat-error *ngIf="descripcionControl.hasError('required')">
+      La descripcion del servicio es <strong>Requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  
+  
+    <!-- Para mostrar una imagen por defecto y subir otra imagen para mostrarla-->
+    <mat-card>
+      <mat-card-content>
+        <div fxFlex="100" *ngIf="incluir; else actImagen" align="center">
+          <img mat-card-image [src]="imagenDefecto" style="width:250px;height: 200px; background-color: grey;">
+        </div>
+        <ng-template #actImagen>
+          <img mat-card-image [src]="imagen" style="width:250px;height: 200px;background-color: grey;">
+        </ng-template>
+      </mat-card-content>
+      <mat-card-actions>
+        <input type="file" style="display: none" #fileInput (change)="imagenEntrada($event.target.files)" accept="image/*" placeholder="Seleccione una imagen" [formControl]="imagenFormControl">
+        <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)="fileInput.click()">Seleccionar Imagen</button>
+        <div *ngIf="imagenSeleccionada != null">
+          <div *ngIf="imagenFormControl.hasError('required')">
+            Descripción <strong>Requerida</strong>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  
+  <div *ngIf="incluir; else act">
+    <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=registrar()>Agregar</button>
+  </div>
+  <ng-template #act>
+    <button mat-raised-button class="secundary-back" style="width: 100%;color: white" (click)=actualizar() cdkFocusInitial>Actualizar</button>
+  </ng-template>
+
+</div>
+
+<div align="center" *ngIf="loading">
+  <mat-progress-spinner
+    [color]="color"
+    [mode]="mode"
+      >
+  </mat-progress-spinner>
+</div>

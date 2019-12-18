@@ -1,0 +1,78 @@
+[33mcommit 6f741de3154bc67ce6b9cde319dc229a55ce569f[m[33m ([m[1;36mHEAD -> [m[1;32mAdrian[m[33m)[m
+Author: Adrián Guevara <adrianjga96@gmail.com>
+Date:   Tue Jul 2 22:04:24 2019 -0400
+
+    Corriendo primera vez el proyecto
+
+[33mcommit fabe5dd7b160bad17d086f7942ab2c454f61b84e[m[33m ([m[1;31morigin/Donai[m[33m, [m[1;32mDonai[m[33m)[m
+Author: unknown <donaiffviii@gmail.com>
+Date:   Tue Jul 2 21:24:39 2019 -0400
+
+    se agrego pantalla maestro de modelode equipo y se cambiaron los colores del sistema
+
+[33mcommit 64e6309e4f7224dff2701cc5a97105f0994b94c8[m
+Author: unknown <donaiffviii@gmail.com>
+Date:   Sun Jun 30 14:08:56 2019 -0400
+
+    se agrego sweet alert y opciones en el sidemenu, ademas se reorganizo enrutamiento
+
+[33mcommit f08f1ad309172fe1350a8efa54b0c66b9370740c[m[33m ([m[1;31morigin/maiker[m[33m)[m
+Author: Maiker Gutierrez <m2ikr23@gmail.com>
+Date:   Wed Jun 26 08:07:54 2019 -0400
+
+    integracios de cambios primera revision
+
+[33mcommit c75d4c92b8b895b854aedf29e3745c97f0afa5e2[m
+Merge: e19cf58 13925a6
+Author: Maiker Gutierrez <m2ikr23@gmail.com>
+Date:   Tue Jun 25 20:54:17 2019 -0400
+
+    Merge branch 'developer' of https://gitlab.com/m2ikr23/colossus-intranet into maiker
+    
+    Integracion de cambios hechos por donai
+
+[33mcommit e19cf587f290589dafd2bf4d2f56c9c5e72d50b7[m
+Author: Maiker Gutierrez <m2ikr23@gmail.com>
+Date:   Tue Jun 25 20:53:03 2019 -0400
+
+    solicitudes
+
+[33mcommit 13925a643f0af71e6a8cfd093151513819c8f3e4[m
+Merge: 2b8feea 581c917
+Author: Maiker Gutierrez <m2ikr23@gmail.com>
+Date:   Tue Jun 25 03:17:57 2019 +0000
+
+    Merge branch 'Donai' into 'developer'
+    
+    menu de maestros y formulario de ejemplo
+    
+    See merge request m2ikr23/colossus-intranet!2
+
+[33mcommit 581c9172e03b676211a1f0769ac359973bc85591[m
+Author: unknown <donaiffviii@gmail.com>
+Date:   Tue Jun 25 03:05:37 2019 -0400
+
+    menu de maestros y formulario de ejemplo
+
+[33mcommit 2b8feeab10a036487d3f5ba2e7a7ca75fff3b762[m
+Merge: 7ca9f0f 94a593a
+Author: Maiker Gutierrez <m2ikr23@gmail.com>
+Date:   Sat Jun 22 21:55:49 2019 +0000
+
+    Merge branch 'Donai' into 'developer'
+    
+    se agrego pantalla de login pero sin enrutamiento, el sistema aun se va al dashboard al cargar
+    
+    See merge request m2ikr23/colossus-intranet!1
+
+[33mcommit 94a593aa991fe2da3b81d5cc444609cc88f3c103[m
+Author: unknown <donaiffviii@gmail.com>
+Date:   Mon Jun 17 13:26:29 2019 -0400
+
+    se agrego pantalla de login pero sin enrutamiento, el sistema aun se va al dashboard al cargar
+
+[33mcommit 7ca9f0f03dd8400c9e7055ad8b5b90c84f2df6fc[m
+Author: Maiker Gutierrez <m2ikr23@gmail.com>
+Date:   Sun Jun 16 11:37:21 2019 -0400
+
+    Initial commit

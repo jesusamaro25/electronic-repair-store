@@ -1,0 +1,142 @@
+@charset "UTF-8";
+/*      Definición de colores principales     */
+/*      Colores claros         */
+/*     Otros colores         */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Muli", "Helvetica", Arial, sans-serif;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+  font-weight: 400;
+  margin: 30px 0 15px;
+}
+
+h1, .h1 {
+  font-size: 3.2em;
+}
+
+h2, .h2 {
+  font-size: 2.6em;
+}
+
+h3, .h3 {
+  font-size: 1.825em;
+  line-height: 1.4;
+  margin: 20px 0 10px;
+}
+
+h4, .h4 {
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+h5, .h5 {
+  font-size: 1.25em;
+  font-weight: 400;
+  line-height: 1.4em;
+  margin-bottom: 15px;
+}
+
+h6, .h6 {
+  font-size: 0.9em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.4em;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
+  color: #383737;
+  font-weight: 300;
+  line-height: 1.4em;
+}
+
+h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
+  font-size: 60%;
+}
+
+.title-uppercase {
+  text-transform: uppercase;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote small {
+  font-style: normal;
+}
+
+.text-muted {
+  color: #DDDDDD;
+}
+
+.text-primary, .text-primary:hover {
+  color: #427C89;
+}
+
+.text-info, .text-info:hover {
+  color: #3091B2;
+}
+
+.text-success, .text-success:hover {
+  color: #42A084;
+}
+
+.text-warning, .text-warning:hover {
+  color: #BB992F;
+}
+
+.text-danger, .text-danger:hover {
+  color: #bf032a;
+}
+
+.glyphicon {
+  line-height: 1;
+}
+/* 
+strong {
+  color: #000000;
+} */
+
+.icon-primary {
+  color: #253B6D;
+}
+
+.icon-info {
+  color: #1891ac;
+}
+
+.icon-success {
+  color: #1f5f8b;
+}
+
+.icon-warning {
+  color: #18aca0;
+}
+
+.icon-danger {
+  color: #1bc16e;
+}
+
+.chart-legend .text-primary, .chart-legend .text-primary:hover {
+  color: #253B6D;
+}
+.chart-legend .text-info, .chart-legend .text-info:hover {
+  color: #1891ac;
+}
+.chart-legend .text-success, .chart-legend .text-success:hover {
+  color: #1f5f8b;
+}
+.chart-legend .text-warning, .chart-legend .text-warning:hover {
+  color: #18aca0;
+}
+.chart-legend .text-danger, .chart-legend .text-danger:hover {
+  color: #1bc16e;
+}

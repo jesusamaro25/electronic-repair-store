@@ -1,0 +1,100 @@
+<mat-card-header>
+    <div mat-card-avatar>
+        <mat-icon>description</mat-icon>
+    </div>
+    <mat-card-title>Detalle de calificacion</mat-card-title>
+</mat-card-header>
+
+<div fxLayout="row">
+    <form fxFlex="100%">
+        <div fxLayout="row">
+            <div fxFlex="34%">
+                <label>
+                    <strong>Pregunta:</strong>
+                </label>
+            </div>
+            <label *ngFor="let preguntas of pregunta" class="pregunta1">
+                {{preguntas.pregunta1}}
+            </label>
+        </div>
+
+        <div fxLayout="row">
+            <div fxFlex="34%">
+                <label>
+                    <strong>Respuesta:</strong>
+                </label>
+            </div>
+            <div fxFlex="1%"></div>
+            <div fxFlex="45%">
+                <label *ngFor="let preguntas of pregunta" class="pregunta1">
+                    {{preguntas.respuesta1}}
+                </label>
+            </div>
+        </div>
+
+        <div fxLayout="row">
+            <div fxFlex="45%">
+                <label>
+                    <strong>Pregunta:</strong>
+                </label>
+            </div>
+            <label *ngFor="let preguntas of pregunta" class="pregunta2">
+                {{preguntas.pregunta2}}
+            </label>
+        </div>
+
+        <div fxLayout="row">
+            <div fxFlex="45%">
+                <label>
+                    <strong>Respuesta:</strong>
+                </label>
+            </div>
+            <div fxFlex="1%"></div>
+            <div fxFlex="74%">
+                <label *ngFor="let preguntas of pregunta" class="pregunta2">
+                    {{preguntas.respuesta2}}
+                </label>
+            </div>
+        </div>
+
+        <div fxLayout="row">
+            <div fxFlex="45%">
+                <label>
+                    <strong>Pregunta:</strong>
+                </label>
+            </div>
+            <div fxFlex="74%">
+                <label *ngFor="let preguntas of pregunta" class="pregunta3">
+                    {{preguntas.pregunta3}}
+                </label>
+            </div>
+        </div>
+
+        <div fxLayout="row">
+            <div fxFlex="45%">
+                <label>
+                    <strong>Respuesta:</strong>
+                </label>
+            </div>
+
+            <label *ngFor="let preguntas of pregunta" class="pregunta3">
+                {{preguntas.respuesta3}}
+            </label>
+        </div>
+
+        <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon>star_rate</mat-icon>
+            </div>
+            <mat-card-title>Calificacion recibida el por servicio </mat-card-title>
+        </mat-card-header>
+
+        <div fxLayout="row">
+            <div fxFlex="45%">
+                <label>
+                    <strong>Calificacion:</strong>
+                </label>
+            </div>
+        </div>
+    </form>
+</div>

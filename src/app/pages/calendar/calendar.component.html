@@ -1,0 +1,95 @@
+<div fxLayout="row" >
+    <div fxFlex="100%">
+      <mat-card>
+        <mat-card-header style="background:#253b6d">
+            <mat-card-title style="color:white" >
+              <a mat-icon-button matTooltip="Regresar" color=":white" style="margin-top: -6px" [routerLink]="['/dashboard']">
+                <mat-icon color="accent">arrow_back</mat-icon>
+              </a>
+              Agenda
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between stretch"  fxFlexFill>
+                <div fxFlex="auto" fxFlexFill >
+                  <div fxFlexFill>
+                    <mat-toolbar color="accent">
+                      <div fxLayout="row" >
+                        <div fxFlex="50%" fxLayout="column">
+                            <div>
+                              <span fxHide fxShow.gt-xs>{{ viewDate | calendarDate:(view + 'ViewTitle'):'es' }}</span>
+                            </div>
+                            <div [ngStyle.xs]="{'font-size.px': 9}"
+                            [ngStyle.sm]="{'font-size.px': 10 }"
+                            [ngStyle.md]="{'font-size.px': 12}"> Ver: 
+                              <button mat-button 
+                                (click)="view = CalendarView.Week"
+                                [class.active]="view === CalendarView.Week"
+                                fxHide
+                                fxShow.gt-sm>
+                                Semana
+                              </button>
+                              <button mat-button 
+                                (click)="view = CalendarView.Day"
+                                [class.active]="view === CalendarView.Day">
+                                Día
+                              </button>
+                            </div>
+                        </div>
+                        <div fxFlex="1 1 auto"></div>
+                          <div fxLayout="column">
+                            <div fxFlexAlign="end">
+                                <button mat-icon-button color="primary"
+                                mwlCalendarPreviousView
+                                  [view]="view"
+                                  [(viewDate)]="viewDate"
+                                  (viewDateChange)="activeDayIsOpen = false">
+                                  <mat-icon>arrow_back_ios</mat-icon>
+                                </button>
+                                <button fxHide.xs mat-icon-button color="primary"
+                                  mwlCalendarToday
+                                  [(viewDate)]="viewDate"><mat-icon>today</mat-icon></button>
+                                <button mat-icon-button color="primary"
+                                  mwlCalendarNextView
+                                  [view]="view"
+                                  [(viewDate)]="viewDate"
+                                  (viewDateChange)="activeDayIsOpen = false"><mat-icon>arrow_forward_ios</mat-icon>
+                                </button>
+                            </div>
+                          </div>
+                      </div>
+                    </mat-toolbar>
+                    <div [ngSwitch]="view" fxFlexFill fxFlexAlign="stretch">
+                      <mwl-calendar-week-view
+                        *ngSwitchCase="CalendarView.Week"
+                        [viewDate]="viewDate"
+                        [events]="events"
+                        [locale]="locale"
+                        [refresh]="refresh"
+                        [dayStartHour]="StartHour"
+                        [dayEndHour]="EndHour"
+                        (eventClicked)="handleEvent('Clicked', $event.event)"
+                        (eventTimesChanged)="eventTimesChanged($event)"
+                        (hourSegmentClicked)="n_cita($event.date)">
+                      </mwl-calendar-week-view>
+                      <mwl-calendar-day-view
+                        *ngSwitchCase="CalendarView.Day"
+                        [viewDate]="viewDate"
+                        [events]="events"
+                        [locale]="locale"
+                        [refresh]="refresh"
+                        [dayStartHour]="StartHour"
+                        [dayEndHour]="EndHour"
+                        (eventClicked)="handleEvent('Clicked', $event.event)"
+                        (eventTimesChanged)="eventTimesChanged($event)"
+                        (hourSegmentClicked)="n_cita($event.date)">
+                      </mwl-calendar-day-view>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </mat-card-content>
+        
+      </mat-card>
+    </div>
+</div>

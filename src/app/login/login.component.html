@@ -1,0 +1,34 @@
+<div class="fondo">
+  <div class="login-register-box">
+    <mat-card>
+      <mat-card-content>
+        <form novalidate="" style="text-align: center">
+          <div class="text-center"><img src="..\..\assets\images\Smartech_2.png" width="280px" height="280px">
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Correo" [formControl]="emailFormControl">
+              <mat-error *ngIf="emailFormControl.hasError('email') || emailFormControl.hasError('required')">
+                Por favor, introduce una dirección de correo electrónico válida
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Contraseña" [formControl]="passFormControl" name="password" #password>
+              <mat-error *ngIf="passFormControl.hasError('required')">
+                La contraseña es <strong>Requerida</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <br>
+          <mat-error *ngIf="usuarioValido">
+            EL correo o contraseña no existe
+          </mat-error>
+          <button mat-raised-button color="primary" (click)="login()" style="width: 100%">Iniciar Sesión</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

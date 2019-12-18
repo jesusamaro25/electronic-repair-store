@@ -1,0 +1,99 @@
+<mat-card style="margin-top: 20px">
+
+  <mat-card-header style="color: white" class="secundary-back">
+        <a color="white">
+            <strong>Servicios Por Tecnico</strong>
+        </a>
+  </mat-card-header>
+
+  <mat-card-content>
+        <a style="margin-left: 40px"> <strong>Fecha</strong> </a>
+         <div fxLayout="row" fxLayoutGap="10px" style="margin-left: 40px">
+            <div fxFlex="12%"> 
+                <mat-form-field color="accent"> 
+                    <mat-label>Desde</mat-label>
+                    <input matInput [matDatepicker]="picker1" [formControl]="inicioControl">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>  
+            </div>
+            <div fxFlex="12%">
+                <mat-form-field color="accent">
+                    <mat-label>Hasta</mat-label>
+                    <input matInput [matDatepicker]="picker2" [formControl]="finControl">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div fxFlex="5%"></div> 
+            
+            <div fxFlex="5%"></div> 
+        </div>
+
+        <div style="margin-left: 35px">
+            <button mat-raised-button class="btn btn-info btn-fill" (click)="CargarTabla()">VER</button>
+            <button (click)="downloadImagePDF()" style="margin-left: 15px" (click)="downloadImagePDF()" mat-raised-button class="btn btn-info btn-fill">PDF</button>
+        </div>
+
+        <div id="content">
+
+            <div fxLayout="row" fxLayoutGap="20px">
+
+                <div *ngIf="inicioControl.valid">
+                    <strong>Desde: {{inicioControl.value | date: 'dd/MM/yyyy'}}</strong>
+                </div>
+                <div *ngIf="finControl.valid">
+                    <strong>Hasta: {{finControl.value | date: 'dd/MM/yyyy'}}</strong>
+                </div>
+        
+            </div>
+
+            <div class="img" style="margin-left: 40px">
+                <div>
+                <br>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <canvas baseChart
+                            [datasets]="barChartData"
+                            [colors]="barChartData"
+                            [labels]="barChartLabels"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType"
+                            height="35"
+                            width="100">
+                    </canvas>
+                    <br>
+                    <br>
+                </div>
+                    <table class="tabla mat-elevation-z8" mat-table [dataSource]="dataSource" style="margin-left: 80px; margin-top:20px">
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position">
+                                <th mat-header-cell *matHeaderCellDef> N° </th>
+                                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                            </ng-container>
+    
+                            <!-- Tecnico Column -->
+                            <ng-container matColumnDef="Tecnico">
+                                <th mat-header-cell *matHeaderCellDef> Técnico </th>
+                                <td mat-cell *matCellDef="let element"> {{element.Tecnico}} </td>
+                            </ng-container>
+    
+                            <!-- Cantidad Column -->
+                            <ng-container matColumnDef="Cantidad">
+                                <th mat-header-cell *matHeaderCellDef> Trabajos realizados </th>
+                                <td mat-cell *matCellDef="let element"> {{element.Cantidad}} </td>
+                            </ng-container>
+                            
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+    
+                        <mat-paginator [pageSizeOptions]="[4, 8, 12]" showFirstLastButtons></mat-paginator>          
+                </div>
+            </div>
+
+        </div>
+     
+  </mat-card-content>  
+
+</mat-card>

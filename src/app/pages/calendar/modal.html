@@ -1,0 +1,68 @@
+<mat-card-header>
+  <div mat-card-avatar> <mat-icon >description</mat-icon> </div>
+  <mat-card-title >Detalle del Evento</mat-card-title>
+</mat-card-header>
+
+<div fxLayout="row">
+  <form fxFlex="100%">
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Fecha del Evento:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.fechaActividad}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Hora:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.bloqueHorario.descripcion}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Descripción</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.descripcion}}</label>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Actividad a Realizar:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.actividad.descripcion}}</label>
+      </div>
+    </div>
+
+    <!-- <div fxLayout="row">
+      <div fxFlex="45%">
+        <label>
+          <strong>Estatus:</strong>
+        </label>&nbsp;
+      </div>
+      <div fxFlex="1%"></div>
+      <div fxFlex="74%">
+        <label>{{data.estatus}}</label>
+      </div>
+    </div> -->
+  </form>
+</div>

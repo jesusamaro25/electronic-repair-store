@@ -1,0 +1,67 @@
+<mat-card>
+
+    <mat-card-header style="color: white" class="secundary-back">
+      <a mat-button color="white" [routerLink]="['/dashboard']">
+        <mat-icon>arrow_back</mat-icon>
+        <strong>Regresar</strong>
+      </a>
+      <a color="white" style="margin-top: 7px;margin-left: 33%">
+        <strong>TAREAS</strong>
+      </a>
+    </mat-card-header>
+
+
+  <div class="mat-elevation-z8">
+    <br>
+  <mat-card style="border: #1891ac 5px outset;">
+    <mat-grid-list cols="5" rowHeight="8:1">
+      <mat-grid-tile class="secundary-font">
+        <div align="center">
+          Fecha
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile class="secundary-font">
+        <div align="center">
+          Cliente
+        </div>
+        </mat-grid-tile>
+      <mat-grid-tile colspan="2" class="secundary-font">
+        <div align="center">
+          Equipo/Actividad
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile class="secundary-font">
+        <div align="center">
+          Acciones
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list> 
+  </mat-card>
+      <mat-card *ngFor="let tarea of tareas" style="border: #1891ac 5px outset;">
+        <mat-grid-list cols="5" rowHeight="2:1">
+          <mat-grid-tile class="secundary-font">
+            {{tarea.fechaActividad}}<br>
+            {{tarea.bloqueHorario.descripcion}}
+          </mat-grid-tile>
+          <mat-grid-tile class="secundary-font">
+            {{tarea.ordenServicio.solicitudServicio.usuario.nombre}} {{tarea.ordenServicio.solicitudServicio.usuario.apellido}}
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2" class="secundary-font">
+            <div align="center">
+              <div style="color: #253b6d"><strong>{{tarea.ordenServicio.solicitudServicio.modeloEquipo.marca.nombre}} {{tarea.ordenServicio.solicitudServicio.modeloEquipo.nombre}}</strong></div>
+              {{tarea.descripcion}}
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="aprobar(tarea)">
+              <mat-icon class="green-icon" matTooltip="Tarea Completada">assignment_turned_in</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="Example icon-button with a heart icon" [routerLink]="['/reagendar',{id: tarea.id, ordenId: tarea.ordenServicio.id }]">
+              <mat-icon class="red-icon" matTooltip="Registrar Incidencia">warning</mat-icon>
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card>
+
+  </div>
+</mat-card>

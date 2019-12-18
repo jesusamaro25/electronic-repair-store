@@ -1,0 +1,339 @@
+<mat-card>
+
+  <mat-card-content>
+
+    <mat-tab-group>
+
+      <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon>account_balance</mat-icon> Empresa
+        </ng-template>
+
+        <div fxLayout="column">
+
+          <div>
+            <br/>
+            <span>Datos Generales</span>
+            <hr/>
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('/empresa')">
+
+                            <mat-icon>account_balance</mat-icon>
+                            <strong>Datos Basicos</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('/horario')">
+                            <mat-icon>alarm</mat-icon>
+                            <strong>Horarios de Trabajo</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+
+
+          </div>
+
+          <div fxLayaout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                          <button mat-button class="secundary-font" (click)="goToPage('/redes-sociales')">
+
+                            <mat-icon>public</mat-icon>
+                            <strong>Redes Sociales</strong>
+
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('/costo-revision')">
+                            <mat-icon>payment</mat-icon>
+                            <strong>Costos por Revision</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+        </div>
+
+          <div>
+            <br/>
+            <span>Filosofia de la empresa</span>
+            <hr/>
+          </div>
+
+          <div fxLayout="row">
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('/mision')">
+                            <mat-icon>turned_in</mat-icon>
+                            <strong>Mision</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('/vision')">
+                            <mat-icon>visibility</mat-icon>
+                            <strong>Vision</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+            <div fxFlex="auto">
+              <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('/valores')">
+                            <mat-icon>verified_user</mat-icon>
+                            <strong>Valores</strong>
+                          </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+        </div>
+
+      </mat-tab>
+
+      <mat-tab>
+
+          <ng-template mat-tab-label>
+              <mat-icon>desktop_windows</mat-icon> Portal Web
+          </ng-template>
+
+          <div fxLayout="column">
+
+            <div>
+              <br/>
+              <span>Pagina de inicio</span>
+              <hr/>
+            </div>
+
+            <div fxLayout="row">
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('imagenes-web')">
+
+                              <mat-icon>image</mat-icon>
+                              <strong>Carrusel de imagenes</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/caracteristicas')">
+
+                              <mat-icon>flip_to_front</mat-icon>
+                              <strong>Nuestras Fortalezas</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/servicios')">
+
+                              <mat-icon>card_giftcard</mat-icon>
+                              <strong>Servicios en exhibicion</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+            </div>
+
+            <div>
+              <br/>
+              <span>Informacion para clientes</span>
+              <hr/>
+            </div>
+
+            <div fxLayaout="row">
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/preguntas')">
+
+                              <mat-icon>question_answer</mat-icon>
+                              <strong>Preguntas Frecuentes</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('/tecnico')">
+
+                              <mat-icon>people</mat-icon>
+                              <strong>Tecnicos en exhibicion</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+              <div fxFlex="auto">
+                <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <div fxFlex="30%">
+                            <button mat-button class="secundary-font" (click)="goToPage('app-descarga')">
+
+                              <mat-icon>cloud_download</mat-icon>
+                              <strong>Descarga de aplicacion</strong>
+
+                            </button>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                </mat-card>
+              </div>
+
+            </div>
+
+          </div>
+
+      </mat-tab>
+
+
+      <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon>vpn_key</mat-icon> Seguridad Funcional
+        </ng-template>
+
+        <div fxLayout="row">
+
+          <div fxFlex="auto">
+            <mat-card>
+                <mat-card-content>
+                  <div fxLayout="row">
+                    <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('roles')">
+
+                          <mat-icon>work</mat-icon>
+                          <strong>Roles</strong>
+
+                        </button>
+                    </div>
+                  </div>
+                </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div fxFlex="auto">
+            <mat-card>
+                <mat-card-content>
+                  <div fxLayout="row">
+                    <div fxFlex="30%">
+                        <button mat-button class="secundary-font" (click)="goToPage('permiso-rol')">
+
+                          <mat-icon>lock_open</mat-icon>
+                          <strong>Permisos Por Rol</strong>
+
+                        </button>
+                    </div>
+                  </div>
+                </mat-card-content>
+            </mat-card>
+          </div>
+
+        </div>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </mat-card-content>
+
+</mat-card>

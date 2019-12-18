@@ -1,0 +1,109 @@
+<div fxLayout="row">
+  <div fxFlex.gt-sm="95%" class="div-content">
+      <mat-horizontal-stepper [linear]="true" #stepper>
+
+          <mat-step [stepControl]="formGroup">
+
+            <form [formGroup]="formGroup" fxFlex.gt-sm="75%" class="div-content">
+
+              <div>
+
+                <strong>Cuantas estrellas le das al servicio recibido?</strong>
+                <br>
+                <app-rating [rating]="rating"  [starCount]="starCount" (ratingUpdated)="onRatingChanged($event)"></app-rating>
+                <br>
+
+                <strong class="body-2">
+                    Diste <span class="body-2">{{rating}}</span> / <span class="body-2">{{starCount}}</span> estrellas
+                </strong>
+  
+                <mat-form-field >
+                  <textarea matInput placeholder="Deja un comentario de tu servicio" style="width:250px; height: 100px;" formControlName="desControl"></textarea>
+                  <mat-error *ngIf="formGroup.get('desControl').hasError('required')">
+                    El comentario es <strong>Requerido</strong>
+                  </mat-error>
+                </mat-form-field>
+  
+  
+                <div class="mat-action-row" >
+                  <button mat-button matStepperNext class="secundary-back" style="color: white">Siguiente</button>
+                </div>
+  
+              </div>
+              
+            </form>
+
+            <ng-template matStepLabel>Califica el servicio</ng-template>
+
+            
+
+          </mat-step>
+
+          <mat-step [stepControl]="orderForm">
+
+            <ng-template matStepLabel>Responde Algunas preguntas</ng-template>
+
+              <div [formGroup]="orderForm">
+
+                  <div formArrayName="items" *ngFor="let item of orderForm.get('items').controls; let i = index;">
+
+                    <strong>{{ orderForm.controls.items.controls[i].controls.pregu.value }}</strong>
+
+                    <div [formGroupName]="i">
+
+                      <mat-radio-group aria-labelledby="example-radio-group-label" 
+                      class="example-radio-group"
+                      formControlName="respuesta">
+
+                        <mat-radio-button class="example-radio-button"   [value]="1">
+                          Muy Mal
+                        </mat-radio-button>
+
+                        <mat-radio-button  class="example-radio-button" [value]="2">
+                          Mal
+                        </mat-radio-button>
+
+                        <mat-radio-button  class="example-radio-button" [value]="3">
+                          Regular
+                        </mat-radio-button>
+
+                        <mat-radio-button class="example-radio-button"  [value]="4">
+                          Bien
+                        </mat-radio-button>
+
+                        <mat-radio-button  class="example-radio-button" [value]="5">
+                          Muy Bien
+                        </mat-radio-button>
+
+                      </mat-radio-group>
+
+                    </div>
+
+    
+                  </div>
+
+                  <div class="mat-action-row" >
+                    <button mat-button matStepperNext class="secundary-back" style="color: white">Siguiente</button>
+                  </div>
+
+              </div>
+          
+          </mat-step>
+
+          <mat-step [stepControl]="formGroup">
+
+            <ng-template matStepLabel>Enviar Calificacion</ng-template>
+
+            <strong>
+              {{mensaje}}
+            </strong>
+
+            <div class="mat-action-row" >
+              <button mat-button matStepperNext (click)="enviar()" class="secundary-back" style="color: white">Enviar</button>
+            </div>
+
+          </mat-step>
+
+      </mat-horizontal-stepper>
+  </div>
+</div>

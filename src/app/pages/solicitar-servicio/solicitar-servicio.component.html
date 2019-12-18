@@ -1,0 +1,264 @@
+<div fxLayout="row">
+  <div fxFlex.gt-sm="95%" class="div-content">
+
+    <mat-horizontal-stepper [linear]="true" #stepper>
+
+      <mat-step [stepControl]="firstFormGroup">
+
+        <form [formGroup]="firstFormGroup" fxFlex.gt-sm="75%" class="div-content">
+
+          <ng-template matStepLabel>Escoge un servicio</ng-template>
+
+          <mat-form-field>
+            <mat-select [formControl]="firstFormGroup.get('servicio')" placeholder="Selecciona un servicio"
+              #singleSelect (selectionChange)="cargarMarca()">
+              <mat-option>
+                <ngx-mat-select-search [formControl]="servicioFilterCtrl" [placeholderLabel]="'Buscar Servicio'"
+                  [noEntriesFoundLabel]="'No hay Resultados'"></ngx-mat-select-search>
+              </mat-option>
+
+              <mat-option *ngFor="let servicio of filteredServicios | async" [value]="servicio">
+                {{servicio.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <strong *ngIf="boolpromo" style="color: #1f5f8b">Promocion Disponible!!!</strong>
+          <div *ngIf="boolpromo">
+            <mat-form-field>
+              <mat-select placeholder="Selecciona una promocion" [formControl]="firstFormGroup.get('promocion')">
+                <mat-option *ngFor="let promociones of promocion" [value]="promociones">
+                  {{promociones.nombre}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+
+          <div class="mat-action-row">
+            <button mat-button matStepperNext class="secundary-back" style="color: white">Siguiente</button>
+          </div>
+
+        </form>
+
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup">
+
+        <form [formGroup]="secondFormGroup" fxFlex.gt-sm="75%" class="div-content">
+
+          <ng-template matStepLabel>Datos del equipo</ng-template>
+
+          <mat-form-field>
+            <mat-select placeholder="Selecciona una marca" [formControl]="secondFormGroup.get('marca_equipo')" (selectionChange)="cargarModelo()">
+              <mat-option *ngFor="let marcas of marca" [value]="marcas.id" #mar>
+                {{marcas.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Selecciona un modelo" [formControl]="secondFormGroup.get('modelo_equipo')" [disabled]="boolmodelo">
+              <mat-option *ngFor="let modelos of modelo" [value]="modelos.id">
+                {{modelos.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field style="margin-top: 10px">
+            <textarea matInput placeholder="Indica porque solicitas el servicio"
+              [formControl]="secondFormGroup.get('problema')" style="height: 100px">
+            </textarea>
+          </mat-form-field>
+
+          <div class="mat-action-row">
+            <button mat-button matStepperNext class="secundary-back" style="color: white">Siguiente</button>
+          </div>
+
+        </form>
+
+      </mat-step>
+
+      <mat-step [stepControl]="thirdFormGroup">
+
+        <form [formGroup]="thirdFormGroup" fxFlex.gt-sm="75%" class="div-content">
+
+          <ng-template matStepLabel>Fecha de revision</ng-template>
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Escoge un dia" [formControl]="thirdFormGroup.get('dia')"
+            (dateChange)="buscarTecnico()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Selecciona un horario" [formControl]="thirdFormGroup.get('hora')" (selectionChange)="buscarTecnico()">
+              <mat-option *ngFor="let bloques of bloque" [value]="bloques.id">
+                {{bloques.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-error *ngIf="thirdFormGroup.get('tecnico').hasError('required') && booltec==true">
+            No hay tecnicos disponibles para el dia y hora seleccionados por favor escoge nuevamente
+          </mat-error>
+
+          <div class="mat-action-row">
+            <button mat-button matStepperNext class="secundary-back" style="color: white">Siguiente</button>
+          </div>
+
+        </form>
+
+      </mat-step>
+
+      <mat-step>
+
+        <div class="div-content">
+
+          <ng-template matStepLabel>Enviar Solicitud</ng-template>
+
+          <mat-card-header>
+            <mat-card-title>Resumen de la solicitud</mat-card-title>
+          </mat-card-header>
+
+          <div fxLayout="row">
+            <form fxFlex="100%">
+
+                <div fxLayout="row">
+                    <div fxFlex="45%">
+                      <label>
+                        <strong>Cliente:</strong>
+                      </label>&nbsp;
+                    </div>
+                    <div fxFlex="1%"></div>
+                    <div fxFlex="74%">
+                      <label>{{user.nombre}} {{user.apellido}}</label>
+                    </div>
+                  </div>
+
+              <div fxLayout="row">
+                <div fxFlex="45%">
+                  <label>
+                    <strong>Fecha de solicitud:</strong>
+                  </label>&nbsp;
+                </div>
+                <div fxFlex="1%"></div>
+                <div fxFlex="74%">
+                  <label>{{today}}</label>
+                </div>
+              </div>
+
+              <div fxLayout="row">
+                <div fxFlex="45%">
+                  <label>
+                    <strong>Marca del equipo:</strong>
+                  </label>&nbsp;
+                </div>
+                <div fxFlex="1%"></div>
+                <div fxFlex="74%">
+                  <label>{{showNombre(marca,secondFormGroup.get(['marca_equipo']).value)}}</label>
+                </div>
+              </div>
+
+              <div fxLayout="row">
+                <div fxFlex="45%">
+                  <label>
+                    <strong>Modelo del equipo:</strong>
+                  </label>&nbsp;
+                </div>
+                <div fxFlex="1%"></div>
+                <div fxFlex="74%">
+                  <label>{{showNombre(modelo,secondFormGroup.get(['modelo_equipo']).value)}}</label>
+                </div>
+              </div>
+
+              <div fxLayout="row">
+                <div fxFlex="45%">
+                  <label>
+                    <strong>Servicio solicitado:</strong>
+                  </label>&nbsp;
+                </div>
+                <div fxFlex="1%"></div>
+                <div fxFlex="74%">
+                  <label>{{firstFormGroup.get(['servicio']).value?.nombre}}</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" *ngIf="firstFormGroup.get('promocion').value!=''">
+                <div fxFlex="45%">
+                  <label>
+                    <strong style="color: #1f5f8b">Promocion:</strong>
+                  </label>&nbsp;
+                </div>
+                <div fxFlex="1%"></div>
+                <div fxFlex="74%">
+                  <label style="color: #1f5f8b">{{showNombre(promocion,firstFormGroup.get(['promocion']).value.id)}}</label>
+                </div>
+              </div>
+
+              <div fxLayout="row">
+                <div fxFlex="45%">
+                  <label>
+                    <strong>Fecha de revision:</strong>
+                  </label>&nbsp;
+                </div>
+                <div fxFlex="1%"></div>
+                <div fxFlex="74%">
+                  <label>{{sdate}}</label>
+                </div>
+              </div>
+
+              <div fxLayout="row">
+                <div fxFlex="45%">
+                  <label>
+                    <strong>Hora de revision:</strong>
+                  </label>&nbsp;
+                </div>
+                <div fxFlex="1%"></div>
+                <div fxFlex="74%">
+                  <label>{{showNombre(bloque,thirdFormGroup.get(['hora']).value)}}</label>
+                </div>
+              </div>
+
+              <div fxLayout="row">
+                <div fxFlex="45%">
+                  <label>
+                    <strong>Motivo de la solicitud:</strong>
+                  </label>&nbsp;
+                </div>
+                <div fxFlex="1%"></div>
+                <div fxFlex="74%">
+                  <label>{{secondFormGroup.get(['problema']).value}}</label>
+                </div>
+              </div>
+
+              <div fxLayout="row">
+                <div fxFlex="45%">
+                  <label>
+                    <strong>Costo de revision:</strong>
+                  </label>&nbsp;
+                </div>
+                <div fxFlex="1%"></div>
+                <div fxFlex="74%">
+                  <label>La revision de tu equipo costara entre {{min}}
+                    y {{max}}</label>
+                </div>
+              </div>
+
+              <div class="mat-action-row">
+                <button mat-button matStepperNext class="secundary-back" style="color: white" (click)="crearSolicitud()">Enviar Solicitud</button>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+
+      </mat-step>
+
+    </mat-horizontal-stepper>
+
+  </div>
+</div>
